@@ -4,7 +4,7 @@
   "source_url": "https://commandcode.ai/docs/plans/go",
   "source_sha256": "2b70981ec9d4bb819e2e1c780deb37a1de91616a21d9de88a96c04e3342ec87b",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "6da2d1a5cf7d18fa97ebc4cf16282d93527281db6e5e4e802936d6bcc5b72959",
+  "models_dev_sha256": "d943b089b406ad20a8c19f12718b44470558e2ce25b0d0dda92236a7621b4fad",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
@@ -1992,5 +1992,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-18T10:58:51Z"
+  "fetched_at": "2026-10-18T15:49:04Z"
 }
