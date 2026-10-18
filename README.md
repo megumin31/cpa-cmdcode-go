@@ -11,7 +11,7 @@ A high-performance C-shared plugin for [CLIProxyAPI](https://github.com/router-f
 ## Features
 
 - **Full Capability & Parity**: Comprehensive support for streaming (SSE), non-streaming completions, tool calls (function calling), reasoning content / thinking tokens, and multimodal image input.
-- **Isolated Namespaced Models**: Models are registered as `cmdcode-go/<model_id>` (e.g., `cmdcode-go/deepseek/deepseek-v4-flash`, `cmdcode-go/moonshotai/Kimi-K3`) with backward-compatible short alias routing to prevent naming collisions with other providers.
+- **Isolated Namespaced Models**: Models are registered as `cmdcode-go/<model_name>` (e.g., `cmdcode-go/deepseek-v4-flash`, `cmdcode-go/Kimi-K3`) without the manufacturer segment; the `cmdcode-go/` prefix keeps the public names separate from other providers.
 - **Zero-Config Credential Detection**: Supports explicit `api_key` in CPA configuration, `COMMANDCODE_KEY` environment variable, or automatic discovery of local CLI login state (`~/.commandcode/auth.json` from `cmd login`).
 - **Dynamic Model Catalog & Auto-Sync**: Bundles a compiled-in model fallback and automatically synchronizes with remote catalog updates (tracked via GitHub Actions), with optional local JSON file overrides.
 - **Resilient Streaming Architecture**: Built on a bounded NDJSON state machine and safe host callback lifecycle, ensuring graceful shutdown without leaked connections or memory corruption.
@@ -20,16 +20,18 @@ A high-performance C-shared plugin for [CLIProxyAPI](https://github.com/router-f
 
 ## Featured Available Models
 
-The plugin discovers and routes all Command Code Go entitled models. Call them using the `cmdcode-go/<model_id>` namespace or their short aliases:
+The plugin discovers and routes all Command Code Go entitled models. Call them using the `cmdcode-go/<model_name>` namespace (manufacturer omitted) or their bare short aliases:
 
 | Model | CPA Model ID | Reference context | Capabilities & Notes |
 | :--- | :--- | :--- | :--- |
-| **DeepSeek V4 Flash** | `cmdcode-go/deepseek/deepseek-v4-flash` | 1M | Fast hybrid-attention reasoning, thinking tokens |
-| **DeepSeek V4 Flash Fast** | `cmdcode-go/deepseek/deepseek-v4-flash-fast` | 1M | Ultra-low latency inference |
-| **Kimi K3** | `cmdcode-go/moonshotai/Kimi-K3` | 1,048,576 | High-throughput reasoning & agentic tasks |
-| **MiMo V2.6 Pro** | `cmdcode-go/xiaomi/mimo-v2.6-pro` | 1,048,576 | Multimodal model; reasoning controls remain provider-specific |
-| **GLM-5.3** | `cmdcode-go/zai-org/GLM-5.3` | 1M | Reasoning and tool-use model |
+| **DeepSeek V4 Flash** | `cmdcode-go/deepseek-v4-flash` | 1M | Fast hybrid-attention reasoning, thinking tokens |
+| **DeepSeek V4 Flash Fast** | `cmdcode-go/deepseek-v4-flash-fast` | 1M | Ultra-low latency inference |
+| **Kimi K3** | `cmdcode-go/Kimi-K3` | 1,048,576 | High-throughput reasoning & agentic tasks |
+| **MiMo V2.6 Pro** | `cmdcode-go/mimo-v2.6-pro` | 1,048,576 | Multimodal model; reasoning controls remain provider-specific |
+| **GLM-5.3** | `cmdcode-go/GLM-5.3` | 1M | Reasoning and tool-use model |
 | **GPT-6 Luna** | `cmdcode-go/gpt-6-luna` | 1.05M | Long-context multimodal model |
+
+The listed ID and name use the short form, for example `cmdcode-go/Kimi-K3`. Existing requests and `models` / `disable_models` entries such as `cmdcode-go/moonshotai/Kimi-K3`, `cpa-cmdcode-go/moonshotai/Kimi-K3`, and `Kimi-K3` remain compatible. Reasoning suffixes such as `cmdcode-go/Kimi-K3(high)` work with both short and legacy IDs. Gateway requests still use the original upstream ID (`moonshotai/Kimi-K3`); catalogs with colliding short names are rejected.
 
 > See [models.json](models.json) for the current Go roster. Membership comes from the official Go page; capabilities are models.dev references, not verified gateway limits. Missing limits use a labeled 262,144-context / 65,536-output fallback profile. See [catalog generation and matching](docs/MODELS.md).
 
@@ -117,7 +119,7 @@ curl -N http://localhost:8317/v1/chat/completions \
   -H "Authorization: Bearer <your-cpa-api-key>" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "cmdcode-go/deepseek/deepseek-v4-flash",
+    "model": "cmdcode-go/deepseek-v4-flash",
     "messages": [{"role": "user", "content": "Write a quicksort in Go."}],
     "stream": true
   }'
@@ -132,7 +134,7 @@ curl http://localhost:8317/v1/chat/completions \
   -H "Authorization: Bearer <your-cpa-api-key>" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "cmdcode-go/moonshotai/Kimi-K3",
+    "model": "cmdcode-go/Kimi-K3",
     "messages": [{"role": "user", "content": "What is 123 * 456?"}],
     "tools": [{
       "type": "function",
@@ -162,7 +164,7 @@ curl -N http://localhost:8317/v1/chat/completions \
   -H "Authorization: Bearer <your-cpa-api-key>" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "cmdcode-go/deepseek/deepseek-v4-flash",
+    "model": "cmdcode-go/deepseek-v4-flash",
     "messages": [{"role": "user", "content": "Solve: if x^2 + 5x + 6 = 0, what is x?"}],
     "stream": true
   }'

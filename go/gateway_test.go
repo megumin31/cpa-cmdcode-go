@@ -812,7 +812,7 @@ func TestRemoteModelsFetchAndCache(t *testing.T) {
 		t.Fatalf("unknown output cap = %d, want 0", c)
 	}
 	for _, m := range got {
-		if m.ID == "cmdcode-go/test/remote-small" && m.DisplayName != "test/remote-small" {
+		if m.ID == "cmdcode-go/remote-small" && m.DisplayName != "test/remote-small" {
 			t.Fatalf("fallback display = %q, want id", m.DisplayName)
 		}
 	}

@@ -21,6 +21,8 @@ type modelDef struct {
 
 func modelBool(v bool) *bool { return &v }
 
+func shortModelName(id string) string { return id[strings.LastIndex(id, "/")+1:] }
+
 // A snapshot owns its slices and indexes; callers never mutate it.
 type modelSnapshot struct {
 	defs    []modelDef
@@ -38,7 +40,7 @@ func newModelSnapshot(defs []modelDef) *modelSnapshot {
 			d.vision = &v
 		}
 		s.byID[strings.ToLower(d.id)] = i
-		short := strings.ToLower(d.id[strings.LastIndex(d.id, "/")+1:])
+		short := strings.ToLower(shortModelName(d.id))
 		if _, exists := s.byShort[short]; exists {
 			s.byShort[short] = -1
 		} else {
@@ -178,6 +180,12 @@ func (s *modelSnapshot) reasoningEffort(selection modelSelection, body *string) 
 func (s *modelSnapshot) Registered(cfg pluginConfig) []pluginapi.ModelInfo {
 	result := make([]pluginapi.ModelInfo, 0, len(s.defs))
 	for _, d := range s.defs {
+		short := shortModelName(d.id)
+		// Remote catalogs reject collisions. Also fail closed for any compiled
+		// snapshot that cannot route its public short name unambiguously.
+		if short == "" || s.byShort[strings.ToLower(short)] < 0 {
+			continue
+		}
 		if !s.Allowed(d.id, cfg) {
 			continue
 		}
@@ -197,7 +205,8 @@ func (s *modelSnapshot) Registered(cfg pluginConfig) []pluginapi.ModelInfo {
 		if d.gatewayOutput > 0 {
 			output = d.gatewayOutput
 		}
-		modelID := ProviderKey + "/" + strings.TrimPrefix(strings.TrimPrefix(d.id, "cpa-cmdcode-go/"), ProviderKey+"/")
+		// Only the public ID is shortened; d.id remains the gateway request ID.
+		modelID := ProviderKey + "/" + short
 		m := pluginapi.ModelInfo{
 			ID: modelID, Object: "model", OwnedBy: ProviderKey, Type: ProviderKey,
 			DisplayName: d.display, Name: modelID, Description: d.description,

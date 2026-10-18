@@ -204,8 +204,8 @@ func parseModelsFile(raw []byte) ([]modelDef, string, error) {
 		id := strings.TrimSpace(m.ID)
 		id = strings.TrimPrefix(id, "cpa-cmdcode-go/")
 		id = strings.TrimPrefix(id, ProviderKey+"/")
-		short := strings.ToLower(id[strings.LastIndex(id, "/")+1:])
-		if id == "" || strings.ContainsAny(id, " \t\r\n") || seen[strings.ToLower(id)] || shorts[short] {
+		short := strings.ToLower(shortModelName(id))
+		if short == "" || strings.ContainsAny(id, " \t\r\n") || seen[strings.ToLower(id)] || shorts[short] {
 			return nil, "", fmt.Errorf("empty, invalid or duplicate model ID/short name: %q", id)
 		}
 		seen[strings.ToLower(id)], shorts[short] = true, true
