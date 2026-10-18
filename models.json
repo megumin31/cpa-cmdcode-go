@@ -4,7 +4,7 @@
   "source_url": "https://commandcode.ai/docs/plans/go",
   "source_sha256": "2b70981ec9d4bb819e2e1c780deb37a1de91616a21d9de88a96c04e3342ec87b",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "dd84f83f28dc8cc7a90f3b3c1477cb14694da6697629f170f61e699268e1cd2c",
+  "models_dev_sha256": "fa7ad266ea4a0ad0860883097cc30d53bbc7d9eae7400f3988cfbbc92af68202",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
@@ -137,23 +137,7 @@
       "reasoning_source": "modelsdev",
       "tool_call": true,
       "tool_call_source": "modelsdev",
-      "reasoning_options_reference": {
-        "provider": "deepseek",
-        "model_id": "deepseek-flash",
-        "options": [
-          {
-            "type": "toggle"
-          },
-          {
-            "type": "effort",
-            "values": [
-              "low",
-              "high",
-              "max"
-            ]
-          }
-        ]
-      },
+      "reasoning_options_reference": null,
       "reasoning_efforts": [],
       "reasoning_efforts_source": "unresolved",
       "metadata_ref": "models/deepseek/deepseek-v4.1-flash",
@@ -179,23 +163,7 @@
       "reasoning_source": "modelsdev",
       "tool_call": true,
       "tool_call_source": "modelsdev",
-      "reasoning_options_reference": {
-        "provider": "deepseek",
-        "model_id": "deepseek-flash",
-        "options": [
-          {
-            "type": "toggle"
-          },
-          {
-            "type": "effort",
-            "values": [
-              "low",
-              "high",
-              "max"
-            ]
-          }
-        ]
-      },
+      "reasoning_options_reference": null,
       "reasoning_efforts": [],
       "reasoning_efforts_source": "unresolved",
       "metadata_ref": "models/deepseek/deepseek-v4.1-flash",
@@ -2024,5 +1992,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-17T20:33:06Z"
+  "fetched_at": "2026-10-18T04:25:54Z"
 }
