@@ -67,8 +67,8 @@ int main(int argc, char **argv) {
     if (expected_version && snprintf(version_match, sizeof(version_match),
                                     "\"Version\":\"%s\"", expected_version) >= (int)sizeof(version_match))
         fail("expected version is too long");
-    const char *route = "{\"RequestedModel\":\"cmdcode-go/deepseek/deepseek-v4-flash\"}";
-    const char *configure = "{\"config_yaml\":\"models_refresh_interval: '0'\\ndisable_models: [deepseek/deepseek-v4-flash]\"}";
+    const char *route = "{\"RequestedModel\":\"cmdcode-go/deepseek-v4-flash\"}";
+    const char *configure = "{\"config_yaml\":\"models_refresh_interval: '0'\\ndisable_models: [cmdcode-go/deepseek-v4-flash]\"}";
     host_api host = {1, NULL, host_call, host_free};
     for (int round = 0; round < 3; ++round) {
         /* Intentionally use the exact same pathname every time. */

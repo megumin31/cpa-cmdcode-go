@@ -463,15 +463,17 @@ func TestMatchModel(t *testing.T) {
 		want string
 		ok   bool
 	}{
-		{"deepseek/deepseek-v4-flash", "deepseek/deepseek-v4-flash", true},
-		{"cmdcode-go/deepseek/deepseek-v4-flash", "deepseek/deepseek-v4-flash", true},
-		{"cpa-cmdcode-go/deepseek/deepseek-v4-flash", "deepseek/deepseek-v4-flash", true},
-		{"cmdcode-go/moonshotai/Kimi-K3", "moonshotai/Kimi-K3", true},
-		{"cpa-cmdcode-go/moonshotai/Kimi-K3", "moonshotai/Kimi-K3", true},
-		{"Kimi-K3", "moonshotai/Kimi-K3", true},
+		{"cmdcode-go/deepseek-v4-flash", "deepseek/deepseek-v4-flash", true},
 		{"cmdcode-go/Kimi-K3", "moonshotai/Kimi-K3", true},
-		{"gpt-5.6-luna", "gpt-5.6-luna", true},
 		{"cmdcode-go/gpt-5.6-luna", "gpt-5.6-luna", true},
+		{"CMDCODE-GO/KIMI-K3(HIGH)", "moonshotai/Kimi-K3", true},
+		{"deepseek/deepseek-v4-flash", "", false},
+		{"cmdcode-go/deepseek/deepseek-v4-flash", "", false},
+		{"cpa-cmdcode-go/deepseek/deepseek-v4-flash", "", false},
+		{"cmdcode-go/moonshotai/Kimi-K3", "", false},
+		{"cpa-cmdcode-go/Kimi-K3", "", false},
+		{"Kimi-K3", "", false},
+		{"gpt-5.6-luna", "", false},
 		{"__foreign_test_model__", "", false},
 		{"", "", false},
 	}
@@ -561,20 +563,20 @@ func TestModelFiltering(t *testing.T) {
 			t.Fatalf("model %s missing cmdcode-go/ prefix", m.ID)
 		}
 	}
-	// Allowlist via flexible names.
-	setConfig(pluginConfig{Models: []string{"Kimi-K3", "cmdcode-go/deepseek/deepseek-v4-flash"}})
+	// Allowlist uses public model IDs.
+	setConfig(pluginConfig{Models: []string{"cmdcode-go/Kimi-K3", "cmdcode-go/deepseek-v4-flash"}})
 	got := registeredModels()
 	if len(got) != 2 {
 		t.Fatalf("allowlist registry = %d models, want 2", len(got))
 	}
-	raw, _ := handleMethod("model.route", []byte(`{"RequestedModel":"gpt-5.6-luna"}`))
+	raw, _ := handleMethod("model.route", []byte(`{"RequestedModel":"cmdcode-go/gpt-5.6-luna"}`))
 	if strings.Contains(string(raw), `"Handled":true`) {
 		t.Fatalf("non-allowlisted model must not be claimed: %s", raw)
 	}
 	// Denylist wins over the default-all.
-	setConfig(pluginConfig{DisableModels: []string{"gpt-5.6-luna"}})
+	setConfig(pluginConfig{DisableModels: []string{"cmdcode-go/gpt-5.6-luna"}})
 	for _, m := range registeredModels() {
-		if m.ID == "cmdcode-go/gpt-5.6-luna" || m.ID == "gpt-5.6-luna" {
+		if m.ID == "cmdcode-go/gpt-5.6-luna" {
 			t.Fatal("denied model still registered")
 		}
 	}
@@ -583,7 +585,7 @@ func TestModelFiltering(t *testing.T) {
 	}
 	// Block-style YAML lists.
 	setConfig(pluginConfig{})
-	raw, err := handleMethod("plugin.reconfigure", []byte(`{"config_yaml":"models:\n  - Kimi-K3\n  - gpt-5.6-luna\n"}`))
+	raw, err := handleMethod("plugin.reconfigure", []byte(`{"config_yaml":"models:\n  - cmdcode-go/Kimi-K3\n  - cmdcode-go/gpt-5.6-luna\n"}`))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -593,7 +595,7 @@ func TestModelFiltering(t *testing.T) {
 	}
 	// Flow-style inline list.
 	setConfig(pluginConfig{})
-	if _, err := handleMethod("plugin.reconfigure", []byte(`{"config_yaml":"disable_models: Kimi-K3, gpt-5.6-luna"}`)); err != nil {
+	if _, err := handleMethod("plugin.reconfigure", []byte(`{"config_yaml":"disable_models: cmdcode-go/Kimi-K3, cmdcode-go/gpt-5.6-luna"}`)); err != nil {
 		t.Fatal(err)
 	}
 	if modelAllowed("moonshotai/Kimi-K3") || !modelAllowed("deepseek/deepseek-v4-flash") {
@@ -602,7 +604,7 @@ func TestModelFiltering(t *testing.T) {
 }
 
 func TestRouteModelContract(t *testing.T) {
-	raw, err := handleMethod("model.route", []byte(`{"RequestedModel":"cmdcode-go/moonshotai/Kimi-K3"}`))
+	raw, err := handleMethod("model.route", []byte(`{"RequestedModel":"cmdcode-go/Kimi-K3"}`))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -805,7 +807,7 @@ func TestRemoteModelsFetchAndCache(t *testing.T) {
 	if len(got) != 3 {
 		t.Fatalf("remote registry = %d models, want 3", len(got))
 	}
-	if _, ok := matchModel("test/remote-only"); !ok {
+	if _, ok := matchModel("cmdcode-go/remote-only"); !ok {
 		t.Fatal("remote-only model not routed")
 	}
 	if c := modelOutputCap("test/remote-small"); c != 0 {
@@ -878,7 +880,7 @@ func TestRemoteModelsFile(t *testing.T) {
 	if len(registeredModels()) != 4 {
 		t.Fatalf("reloaded registry = %d models, want 4", len(registeredModels()))
 	}
-	if _, ok := matchModel("test/remote-extra"); !ok {
+	if _, ok := matchModel("cmdcode-go/remote-extra"); !ok {
 		t.Fatal("reloaded model not routed")
 	}
 }

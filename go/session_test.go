@@ -19,7 +19,7 @@ import (
 )
 
 func sessionRequest() pluginapi.ExecutorRequest {
-	return pluginapi.ExecutorRequest{AuthID: "account-a", Model: "test/reasoner", Metadata: map[string]any{"caller_scope": "host-caller-a"}, Headers: http.Header{"X-Session-Id": {"conversation-a"}}, Payload: []byte(`{"messages":[{"role":"user","content":"hello"}]}`)}
+	return pluginapi.ExecutorRequest{AuthID: "account-a", Model: "cmdcode-go/reasoner", Metadata: map[string]any{"caller_scope": "host-caller-a"}, Headers: http.Header{"X-Session-Id": {"conversation-a"}}, Payload: []byte(`{"messages":[{"role":"user","content":"hello"}]}`)}
 }
 func prepID(t *testing.T, p *Plugin, r pluginapi.ExecutorRequest) (string, turnPrep) {
 	t.Helper()

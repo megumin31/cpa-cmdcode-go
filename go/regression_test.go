@@ -199,7 +199,7 @@ func TestRegressionMalformedHistoricalArgumentsFail(t *testing.T) {
 			if raw, err := buildEnvelopeWithSnapshot("test/reasoner", payload, p.snapshot()); err == nil {
 				t.Fatalf("malformed tool history silently accepted: %s", raw)
 			}
-			regressionBadRequest(t, p, pluginapi.ExecutorRequest{Model: "test/reasoner", Payload: payload})
+			regressionBadRequest(t, p, pluginapi.ExecutorRequest{Model: "cmdcode-go/reasoner", Payload: payload})
 		})
 	}
 }
@@ -212,7 +212,7 @@ func TestRegressionInvalidSchemasReturnBadRequest(t *testing.T) {
 				"messages": []any{map[string]string{"role": "user", "content": "hello"}},
 				"tools":    []any{map[string]any{"type": "function", "function": map[string]any{"name": "lookup", "parameters": json.RawMessage(schema)}}},
 			})
-			regressionBadRequest(t, p, pluginapi.ExecutorRequest{Model: "test/reasoner", Payload: payload})
+			regressionBadRequest(t, p, pluginapi.ExecutorRequest{Model: "cmdcode-go/reasoner", Payload: payload})
 		})
 	}
 }
@@ -263,14 +263,14 @@ func TestRegressionSchemaNumbersRemainExactWhenAddingType(t *testing.T) {
 func TestRegressionThinkingSuffixAndBodyPrecedence(t *testing.T) {
 	p := regressionPlugin(t)
 	tests := []struct{ name, model, bodyEffort, wantEffort string }{
-		{"namespace", "cmdcode-go/test/reasoner(high)", "", "high"},
-		{"short-name", "reasoner(high)", "", "high"},
-		{"case-insensitive", "CMDCODE-GO/TEST/REASONER(HIGH)", "", "high"},
+		{"namespace", "cmdcode-go/reasoner(high)", "", "high"},
+		{"trimmed", " cmdcode-go/reasoner(high) ", "", "high"},
+		{"case-insensitive", "CMDCODE-GO/REASONER(HIGH)", "", "high"},
 		// CPA v7.2.149 internal/thinking/apply.go gives the suffix priority.
-		{"suffix-over-body", "cmdcode-go/test/reasoner(high)", "low", "high"},
-		{"suffix-over-invalid-body", "test/reasoner(high)", "unsupported", "high"},
-		{"body-only", "cmdcode-go/test/reasoner", "max", "max"},
-		{"no-effort", "cmdcode-go/test/reasoner", "", ""},
+		{"suffix-over-body", "cmdcode-go/reasoner(high)", "low", "high"},
+		{"suffix-over-invalid-body", "cmdcode-go/reasoner(high)", "unsupported", "high"},
+		{"body-only", "cmdcode-go/reasoner", "max", "max"},
+		{"no-effort", "cmdcode-go/reasoner", "", ""},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
@@ -303,10 +303,10 @@ func TestRegressionThinkingSuffixAndBodyPrecedence(t *testing.T) {
 func TestRegressionUnsupportedEffortsAndUnknownModelsFail(t *testing.T) {
 	p := regressionPlugin(t)
 	tests := []struct{ model, effort string }{
-		{"test/reasoner(ultra)", ""},
-		{"test/reasoner(8192)", ""},
-		{"test/reasoner()", ""},
-		{"test/reasoner", "ultra"},
+		{"cmdcode-go/reasoner(ultra)", ""},
+		{"cmdcode-go/reasoner(8192)", ""},
+		{"cmdcode-go/reasoner()", ""},
+		{"cmdcode-go/reasoner", "ultra"},
 		{"cmdcode-go/test/unknown(high)", ""},
 		{"test/unknown", ""},
 		{"", ""},
@@ -328,7 +328,7 @@ func TestRegressionDefaultEffortsAreExplicitlySupported(t *testing.T) {
 		t.Run("body="+level, func(t *testing.T) {
 			// Include the empty string explicitly, unlike an absent property.
 			payload := regressionJSON(t, map[string]any{"messages": []any{}, "reasoning_effort": level})
-			prep, failure, err := p.prepareTurn(pluginapi.ExecutorRequest{Model: "test/reasoner", Payload: payload})
+			prep, failure, err := p.prepareTurn(pluginapi.ExecutorRequest{Model: "cmdcode-go/reasoner", Payload: payload})
 			if err != nil || len(failure) != 0 {
 				t.Fatalf("default effort rejected: %v %s", err, failure)
 			}
@@ -342,7 +342,7 @@ func TestRegressionDefaultEffortsAreExplicitlySupported(t *testing.T) {
 		}
 		t.Run("suffix="+level, func(t *testing.T) {
 			prep, failure, err := p.prepareTurn(pluginapi.ExecutorRequest{
-				Model:   "cmdcode-go/test/reasoner(" + level + ")",
+				Model:   "cmdcode-go/reasoner(" + level + ")",
 				Payload: []byte(`{"messages":[],"reasoning_effort":"high"}`),
 			})
 			if err != nil || len(failure) != 0 {
@@ -389,16 +389,16 @@ func TestRegressionAdvertisedThinkingLevelsAreRepresentable(t *testing.T) {
 
 func TestRegressionSuffixedModelsCannotBypassFilters(t *testing.T) {
 	for _, config := range []string{
-		"disable_models: [test/reasoner]",
-		"disable_models: ['cmdcode-go/test/reasoner(high)']",
-		"models: [test/plain]",
+		"disable_models: [cmdcode-go/reasoner]",
+		"disable_models: ['cmdcode-go/reasoner(high)']",
+		"models: [cmdcode-go/plain]",
 	} {
 		t.Run(config, func(t *testing.T) {
 			p := regressionPlugin(t)
 			if err := p.Configure(regressionJSON(t, map[string]string{"config_yaml": config})); err != nil {
 				t.Fatal(err)
 			}
-			for _, name := range []string{"test/reasoner", "cmdcode-go/test/reasoner(high)", "reasoner(high)"} {
+			for _, name := range []string{"cmdcode-go/reasoner", "cmdcode-go/reasoner(high)", "CMDCODE-GO/REASONER(HIGH)"} {
 				route := p.routeModel(regressionJSON(t, pluginapi.ModelRouteRequest{RequestedModel: name}))
 				if route.Handled {
 					t.Errorf("disabled model routed: %s", name)
@@ -408,10 +408,10 @@ func TestRegressionSuffixedModelsCannotBypassFilters(t *testing.T) {
 		})
 	}
 	p := regressionPlugin(t)
-	if err := p.Configure([]byte(`{"config_yaml":"models: ['cmdcode-go/test/reasoner(high)']"}`)); err != nil {
+	if err := p.Configure([]byte(`{"config_yaml":"models: ['cmdcode-go/reasoner(high)']"}`)); err != nil {
 		t.Fatal(err)
 	}
-	for _, name := range []string{"test/reasoner", "cmdcode-go/test/reasoner(high)", "reasoner(high)"} {
+	for _, name := range []string{"cmdcode-go/reasoner", "cmdcode-go/reasoner(high)", "CMDCODE-GO/REASONER(HIGH)"} {
 		if route := p.routeModel(regressionJSON(t, pluginapi.ModelRouteRequest{RequestedModel: name})); !route.Handled {
 			t.Errorf("allowed suffixed model not routed: %s", name)
 		}
@@ -423,7 +423,7 @@ func TestRegressionCountTokensUsesSDKPayload(t *testing.T) {
 	translated := []byte(`{"messages":[{"role":"user","content":"hello"}]}`)
 	original := []byte(`{"model":"test/reasoner","messages":[{"role":"user","content":"original payload to count"}]}`)
 	for _, originalRequest := range [][]byte{nil, original} {
-		request := pluginapi.ExecutorRequest{Model: "test/reasoner", Payload: translated, OriginalRequest: originalRequest, SourceFormat: "chat-completions", Format: "chat-completions"}
+		request := pluginapi.ExecutorRequest{Model: "cmdcode-go/reasoner", Payload: translated, OriginalRequest: originalRequest, SourceFormat: "chat-completions", Format: "chat-completions"}
 		raw, err := p.Handle(pluginabi.MethodExecutorCountTokens, regressionJSON(t, request))
 		if err != nil {
 			t.Fatal(err)
@@ -520,8 +520,8 @@ func TestRegressionClaudeCountThroughPinnedHostTranslation(t *testing.T) {
 	registry := builtin.Registry()
 	registry.SetPluginHooks(regressionTranslatorHooks{t: t, p: p})
 	t.Cleanup(func() { registry.SetPluginHooks(nil) })
-	const model = "cmdcode-go/test/reasoner"
-	original := []byte(`{"model":"cmdcode-go/test/reasoner","messages":[{"role":"user","content":"count this Claude request"}]}`)
+	const model = "cmdcode-go/reasoner"
+	original := []byte(`{"model":"cmdcode-go/reasoner","messages":[{"role":"user","content":"count this Claude request"}]}`)
 	translated := registry.TranslateRequest(sdktranslator.FormatClaude, sdktranslator.FormatOpenAI, model, original, false)
 	// Both formats are OpenAI after host prepareExecutorCall, despite the
 	// original caller being Claude. Testing SourceFormat=claude masks this bug.

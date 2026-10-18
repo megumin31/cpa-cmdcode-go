@@ -55,8 +55,7 @@ type modelSelection struct {
 	suffix *string
 }
 
-// parseModelName follows CPA's terminal model(value) syntax. Namespace and
-// suffix handling is shared by lookup, routing, filtering and execution.
+// parseModelName follows CPA's terminal model(value) syntax.
 func parseModelName(name string) modelSelection {
 	name = strings.TrimSpace(name)
 	selection := modelSelection{base: name}
@@ -65,24 +64,19 @@ func parseModelName(name string) modelSelection {
 		selection.base = strings.TrimSpace(name[:at])
 		selection.suffix = &value
 	}
-	for _, prefix := range []string{"cpa-cmdcode-go/", ProviderKey + "/"} {
-		if strings.HasPrefix(strings.ToLower(selection.base), prefix) {
-			selection.base = selection.base[len(prefix):]
-			break
-		}
-	}
 	return selection
 }
 
+// Match accepts only public cmdcode-go/<model_name> IDs. Upstream IDs belong
+// to internal definitions and gateway requests, never public routing aliases.
 func (s *modelSnapshot) Match(name string) (string, bool) {
 	key := strings.ToLower(parseModelName(name).base)
-	if i, ok := s.byID[key]; ok {
-		return s.defs[i].id, true
+	if !strings.HasPrefix(key, ProviderKey+"/") {
+		return "", false
 	}
-	if !strings.Contains(key, "/") {
-		if i, ok := s.byShort[key]; ok && i >= 0 {
-			return s.defs[i].id, true
-		}
+	key = strings.TrimPrefix(key, ProviderKey+"/")
+	if i, ok := s.byShort[key]; key != "" && ok && i >= 0 {
+		return s.defs[i].id, true
 	}
 	return "", false
 }
@@ -104,15 +98,9 @@ func (s *modelSnapshot) Allowed(id string, cfg pluginConfig) bool {
 	return false
 }
 
-func (s *modelSnapshot) Resolve(name string) string {
-	if id, ok := s.Match(name); ok {
-		return id
-	}
-	return parseModelName(name).base
-}
-
+// Definition looks up the original upstream ID after public ID resolution.
 func (s *modelSnapshot) Definition(id string) (modelDef, bool) {
-	key := strings.ToLower(parseModelName(id).base)
+	key := strings.ToLower(id)
 	i, ok := s.byID[key]
 	if !ok {
 		return modelDef{}, false

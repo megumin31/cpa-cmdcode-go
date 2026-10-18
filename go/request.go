@@ -114,7 +114,7 @@ func buildEnvelopeForSession(upstreamModel string, payload []byte, snap turnSnap
 		return nil, fmt.Errorf("cmdcode-go: chat payload must contain exactly one JSON value")
 	}
 	selection := parseModelName(upstreamModel)
-	if canonical, ok := snap.models.Match(selection.base); ok {
+	if canonical, ok := snap.models.Match(upstreamModel); ok {
 		selection.base = canonical
 	}
 	effort, err := snap.models.reasoningEffort(selection, chat.ReasoningEffort)

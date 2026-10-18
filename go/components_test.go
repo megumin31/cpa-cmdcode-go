@@ -106,10 +106,10 @@ func TestRegistrySingleFlightAndStalePublish(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, ok := r.Snapshot().Match("test/new-source"); !ok {
+	if _, ok := r.Snapshot().Match("cmdcode-go/new-source"); !ok {
 		t.Fatal("stale response overwrote new snapshot")
 	}
-	if _, ok := r.Snapshot().Match("test/remote-only"); ok {
+	if _, ok := r.Snapshot().Match("cmdcode-go/remote-only"); ok {
 		t.Fatal("old source published")
 	}
 }
@@ -242,7 +242,7 @@ func TestPreparedTurnUsesOneConfigSnapshot(t *testing.T) {
 	if err := p.Configure(configRequest("api_key: first\nbase_url: " + srv.URL + "\ncli_version: old\n")); err != nil {
 		t.Fatal(err)
 	}
-	prep, raw, err := p.prepareTurn(pluginapi.ExecutorRequest{Model: "deepseek/deepseek-v4-flash", Payload: []byte(`{"messages":[]}`)})
+	prep, raw, err := p.prepareTurn(pluginapi.ExecutorRequest{Model: "cmdcode-go/deepseek-v4-flash", Payload: []byte(`{"messages":[]}`)})
 	if raw != nil || err != nil {
 		t.Fatal(string(raw), err)
 	}
@@ -257,7 +257,7 @@ func TestPreparedTurnUsesOneConfigSnapshot(t *testing.T) {
 
 func streamRequest(id string) []byte {
 	r := streamIDRequest{ExecutorRequest: pluginapi.ExecutorRequest{
-		Model: "deepseek/deepseek-v4-flash", Payload: []byte(`{"messages":[{"role":"user","content":"hi"}]}`),
+		Model: "cmdcode-go/deepseek-v4-flash", Payload: []byte(`{"messages":[{"role":"user","content":"hi"}]}`),
 	}, StreamID: id}
 	b, _ := json.Marshal(r)
 	return b

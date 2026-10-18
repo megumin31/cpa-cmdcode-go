@@ -28,7 +28,6 @@ func registeredModels() []pluginapi.ModelInfo {
 }
 func matchModel(n string) (string, bool)       { return defaultPlugin.Models.Snapshot().Match(n) }
 func modelAllowed(n string) bool               { s := defaultPlugin.snapshot(); return s.models.Allowed(n, s.config) }
-func resolveUpstreamModel(n string) string     { return defaultPlugin.Models.Snapshot().Resolve(n) }
 func resolveAPIKey(a map[string]string) string { return getConfig().resolveAPIKey(a) }
 func resolveBaseURL() string                   { return getConfig().resolveBaseURL() }
 func cliVersion() string                       { return getConfig().cliVersion() }

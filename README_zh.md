@@ -11,7 +11,7 @@
 ## 特性
 
 - **全协议与全能力支持**：全面支持流式对话（SSE）、非流式对话、Tool Calls（函数调用）、Reasoning Content（思考过程 / 思考 Token）以及多模态图片识别。
-- **独立模型命名空间**：所有模型均挂载至 `cmdcode-go/<model_name>` 独立命名空间（例如 `cmdcode-go/deepseek-v4-flash`、`cmdcode-go/Kimi-K3` 等），省略中间的模型厂商段，保留 `cmdcode-go/` 前缀以区分其他渠道；同时支持裸短名路由。
+- **独立模型命名空间**：所有模型均挂载至 `cmdcode-go/<model_name>` 独立命名空间（例如 `cmdcode-go/deepseek-v4-flash`、`cmdcode-go/Kimi-K3` 等），省略中间的模型厂商段，保留 `cmdcode-go/` 前缀以区分其他渠道。
 - **零配置灵活凭据识别**：支持在 CPA 配置文件中显式配置 `api_key`、读取 `COMMANDCODE_KEY` 环境变量，或自动读取本地已有 `cmd login` 登录态（`~/.commandcode/auth.json`）。
 - **动态模型清单与云端自动同步**：内置编译期模型底账，同时默认自动从云端同步最新模型列表（通过 GitHub Actions 追踪官方 CLI 更新），亦支持指定本地 JSON 文件覆盖。
 - **高韧性流式架构**：基于有界 NDJSON 状态机和受控的 Host 回调生命周期设计，保证在动态配置重载或服务关闭时优雅注销工作线程，杜绝连接泄漏与内存冲突。
@@ -20,7 +20,7 @@
 
 ## 精选可用模型
 
-本插件自动发现并路由 Command Code Go 套餐所包含的全部授权模型，通过 `cmdcode-go/<model_name>` 短 ID（省略模型厂商）或裸短名进行调用：
+本插件自动发现并路由 Command Code Go 套餐所包含的全部授权模型，通过 `cmdcode-go/<model_name>` 短 ID（省略模型厂商）进行调用：
 
 | 模型名称 | CPA 模型 ID | 上下文参考值 | 能力特性与说明 |
 | :--- | :--- | :--- | :--- |
@@ -31,7 +31,7 @@
 | **GLM-5.3** | `cmdcode-go/GLM-5.3` | 1M | 推理与工具调用模型 |
 | **GPT-6 Luna** | `cmdcode-go/gpt-6-luna` | 1.05M | 长上下文多模态模型 |
 
-模型列表中的 ID 和 Name 统一使用短格式，例如 `cmdcode-go/Kimi-K3`。已有请求及 `models` / `disable_models` 配置中的 `cmdcode-go/moonshotai/Kimi-K3`、`cpa-cmdcode-go/moonshotai/Kimi-K3`、`Kimi-K3` 等写法继续兼容；短 ID 和旧 ID 都支持 `(high)` 等推理等级后缀。发送给上游的 ID 仍为原始 `moonshotai/Kimi-K3`；含有重复短名的目录会被拒绝。
+对外 ID 和 Name 统一使用 `cmdcode-go/<model_name>`，例如 `cmdcode-go/Kimi-K3`；请求及 `models` / `disable_models` 配置均使用此格式，支持 `(high)` 等推理等级后缀。不再接受带厂商的旧 ID 或无前缀裸名。发送给上游的 ID 仍为原始 `moonshotai/Kimi-K3`；含有重复短名的目录会被拒绝。
 
 > 当前 Go 名单参见 [models.json](models.json)。套餐归属取自官方 Go 页面，能力参数来自 models.dev 参考资料，不代表已验证的网关限制。缺失限额统一采用标注为 fallback 的 262,144 上下文 / 65,536 输出默认值。详见[目录生成与匹配说明](docs/MODELS.md)。
 

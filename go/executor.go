@@ -209,10 +209,18 @@ const countResponseID = "cmdcode-go-count-tokens-v1"
 // count translator, and loses the original format before this RPC. The marker
 // and prompt usage survive OpenAI -> Claude conversion; normalizeAfter then
 // restores Claude's count-only response. Same-format callers use input_tokens.
-func countTokens(request []byte) ([]byte, error) {
+func (p *Plugin) countTokens(request []byte) ([]byte, error) {
 	req, _, err := decodeExecutorRequest(request)
 	if err != nil {
 		return nil, err
+	}
+	snap := p.snapshot()
+	upstream, known := snap.models.Match(req.Model)
+	if !known {
+		return requestErrorEnvelope("unknown_model", "cmdcode-go: model is not in the current catalog"), nil
+	}
+	if !snap.models.Allowed(upstream, snap.config) {
+		return requestErrorEnvelope("model_disabled", "cmdcode-go: model excluded by configuration"), nil
 	}
 	payload := req.Payload
 	if len(req.OriginalRequest) > 0 {

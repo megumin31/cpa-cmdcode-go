@@ -20,7 +20,7 @@ A high-performance C-shared plugin for [CLIProxyAPI](https://github.com/router-f
 
 ## Featured Available Models
 
-The plugin discovers and routes all Command Code Go entitled models. Call them using the `cmdcode-go/<model_name>` namespace (manufacturer omitted) or their bare short aliases:
+The plugin discovers and routes all Command Code Go entitled models. Call them using the `cmdcode-go/<model_name>` namespace (manufacturer omitted):
 
 | Model | CPA Model ID | Reference context | Capabilities & Notes |
 | :--- | :--- | :--- | :--- |
@@ -31,7 +31,7 @@ The plugin discovers and routes all Command Code Go entitled models. Call them u
 | **GLM-5.3** | `cmdcode-go/GLM-5.3` | 1M | Reasoning and tool-use model |
 | **GPT-6 Luna** | `cmdcode-go/gpt-6-luna` | 1.05M | Long-context multimodal model |
 
-The listed ID and name use the short form, for example `cmdcode-go/Kimi-K3`. Existing requests and `models` / `disable_models` entries such as `cmdcode-go/moonshotai/Kimi-K3`, `cpa-cmdcode-go/moonshotai/Kimi-K3`, and `Kimi-K3` remain compatible. Reasoning suffixes such as `cmdcode-go/Kimi-K3(high)` work with both short and legacy IDs. Gateway requests still use the original upstream ID (`moonshotai/Kimi-K3`); catalogs with colliding short names are rejected.
+The public ID and name use only `cmdcode-go/<model_name>`, for example `cmdcode-go/Kimi-K3`. Use the same format in requests and `models` / `disable_models` configuration. Reasoning suffixes such as `cmdcode-go/Kimi-K3(high)` are supported. Old manufacturer-qualified IDs and bare model names are no longer accepted. Gateway requests still use the original upstream ID (`moonshotai/Kimi-K3`); catalogs with colliding short names are rejected.
 
 > See [models.json](models.json) for the current Go roster. Membership comes from the official Go page; capabilities are models.dev references, not verified gateway limits. Missing limits use a labeled 262,144-context / 65,536-output fallback profile. See [catalog generation and matching](docs/MODELS.md).
 

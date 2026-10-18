@@ -40,7 +40,7 @@ func TestPublicModelIDsKeepUpstreamIdentity(t *testing.T) {
 					t.Fatalf("duplicate public ID: %s", model.ID)
 				}
 				seen[strings.ToLower(model.ID)] = true
-				for _, alias := range []string{model.ID, "cpa-cmdcode-go/" + strings.TrimPrefix(model.ID, ProviderKey+"/"), ProviderKey + "/" + upstream, upstream} {
+				for _, alias := range []string{model.ID, strings.ToUpper(model.ID)} {
 					if got, ok := p.Models.Snapshot().Match(alias); !ok || got != upstream {
 						t.Fatalf("Match(%q) = %q, %v; want %q", alias, got, ok, upstream)
 					}
@@ -78,14 +78,10 @@ func TestPublicModelIDsKeepUpstreamIdentity(t *testing.T) {
 	}
 }
 
-func TestPublicModelAliasesShareFiltersAndReasoning(t *testing.T) {
+func TestPublicModelIDsShareFiltersAndReasoning(t *testing.T) {
 	aliases := []string{
+		"cmdcode-go/reasoner",
 		"cmdcode-go/reasoner(high)",
-		"cmdcode-go/test/reasoner(high)",
-		"cpa-cmdcode-go/reasoner(high)",
-		"cpa-cmdcode-go/test/reasoner(high)",
-		"test/reasoner(high)",
-		"reasoner(high)",
 		"CMDCODE-GO/REASONER(HIGH)",
 	}
 	for _, filter := range aliases {
@@ -102,7 +98,7 @@ func TestPublicModelAliasesShareFiltersAndReasoning(t *testing.T) {
 				if route := p.routeModel(regressionJSON(t, pluginapi.ModelRouteRequest{RequestedModel: alias})); !route.Handled {
 					t.Fatalf("allowed alias not routed: %s", alias)
 				}
-				prep, failure, err := p.prepareTurn(pluginapi.ExecutorRequest{Model: alias, Payload: []byte(`{"messages":[],"reasoning_effort":"low"}`)})
+				prep, failure, err := p.prepareTurn(pluginapi.ExecutorRequest{Model: alias, Payload: []byte(`{"messages":[],"reasoning_effort":"high"}`)})
 				if err != nil || len(failure) != 0 {
 					t.Fatalf("prepare %q: %v %s", alias, err, failure)
 				}
@@ -123,6 +119,37 @@ func TestPublicModelAliasesShareFiltersAndReasoning(t *testing.T) {
 					t.Fatalf("denied alias was routed: %s", alias)
 				}
 				regressionBadRequest(t, p, pluginapi.ExecutorRequest{Model: alias, Payload: []byte(`{"messages":[]}`)})
+			}
+		})
+	}
+}
+
+func TestPublicModelIDsRejectLegacyAndBareNames(t *testing.T) {
+	p := regressionPlugin(t)
+	for _, name := range []string{
+		"cmdcode-go/test/reasoner",
+		"cmdcode-go/test/reasoner(high)",
+		"cpa-cmdcode-go/test/reasoner",
+		"cpa-cmdcode-go/reasoner",
+		"test/reasoner",
+		"reasoner",
+		"reasoner(high)",
+	} {
+		t.Run(name, func(t *testing.T) {
+			if _, ok := p.Models.Snapshot().Match(name); ok {
+				t.Fatal("non-public model ID matched")
+			}
+			if route := p.routeModel(regressionJSON(t, pluginapi.ModelRouteRequest{RequestedModel: name})); route.Handled {
+				t.Fatal("non-public model ID routed")
+			}
+			regressionBadRequest(t, p, pluginapi.ExecutorRequest{Model: name, Payload: []byte(`{"messages":[]}`)})
+			body, err := p.Handle(pluginabi.MethodExecutorCountTokens, regressionJSON(t, pluginapi.ExecutorRequest{Model: name, Payload: []byte(`{"messages":[]}`)}))
+			var envelope pluginabi.Envelope
+			if err != nil || json.Unmarshal(body, &envelope) != nil || envelope.OK || envelope.Error == nil || envelope.Error.HTTPStatus != http.StatusBadRequest {
+				t.Fatalf("non-public model ID accepted by token counting: %v %s", err, body)
+			}
+			if models := p.Models.Snapshot().Registered(pluginConfig{Models: []string{name}}); len(models) != 0 {
+				t.Fatalf("non-public model ID enabled a model: %+v", models)
 			}
 		})
 	}

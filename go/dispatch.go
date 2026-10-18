@@ -42,7 +42,7 @@ func (p *Plugin) Handle(method string, request []byte) ([]byte, error) {
 	case pluginabi.MethodExecutorExecuteStream:
 		return p.executeStream(ctx, request)
 	case pluginabi.MethodExecutorCountTokens:
-		return countTokens(request)
+		return p.countTokens(request)
 	case pluginabi.MethodResponseNormalizeBefore:
 		return normalizeBefore(request)
 	case pluginabi.MethodResponseNormalizeAfter:

@@ -79,14 +79,16 @@ only the final path segment of the upstream ID and preserving its case and
 variant suffixes. For example, `moonshotai/Kimi-K3` is listed as
 `cmdcode-go/Kimi-K3`; `stealth/cat-jam:free` becomes `cmdcode-go/cat-jam:free`.
 The original IDs remain in `models.json`, compiled definitions, and gateway
-requests. Bare short names and legacy namespaced full IDs remain valid for
-routing, allowlists, denylists, and reasoning suffixes. Short-name collisions
+requests. Routing, allowlists, and denylists accept only the public short ID;
+reasoning suffixes remain supported. Old full IDs, the `cpa-cmdcode-go/` prefix,
+and bare names are not public aliases. Short-name collisions
 are compared case-insensitively and reject a downloaded catalog, retaining the
 last good snapshot. Compiled snapshots never advertise ambiguous short names.
 
 CPA 列表仅省略厂商路径，保留模型名大小写和变体后缀；上游请求与目录原始 ID
-不变。旧三段 ID、裸短名、黑白名单及推理等级后缀继续兼容。短名忽略大小写后
-发生冲突时拒绝目录更新并保留上次有效名单，避免误路由。
+不变。请求与黑白名单仅接受 `cmdcode-go/模型名`，支持推理等级后缀；旧三段 ID、
+旧插件前缀和裸短名均不再兼容。短名忽略大小写后发生冲突时拒绝目录更新并保留
+上次有效名单，避免误路由。
 
 ## Capability and fallback semantics / 能力与兜底语义
 

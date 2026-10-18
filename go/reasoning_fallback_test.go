@@ -37,7 +37,7 @@ func TestReasoningFallbackExecutors(t *testing.T) {
 							t.Fatal(err)
 						}
 						p.Models = NewModelRegistry([]modelDef{{id: "xiaomi/mimo-v2.6-pro"}, {id: "test/reasoner", efforts: []string{"low", "high", "max"}}}, &http.Client{Transport: regressionNoNetwork{}})
-						selected := model
+						selected := ProviderKey + "/" + shortModelName(model)
 						payload := map[string]any{"messages": []any{}, "reasoning_effort": effort}
 						if suffix {
 							selected += "(" + effort + ")"
@@ -93,7 +93,7 @@ func TestReasoningMissingAndMalformed(t *testing.T) {
 	}
 	for _, value := range []string{`123`, `true`, `[]`, `{}`, `"meduim"`} {
 		t.Run(value, func(t *testing.T) {
-			regressionBadRequest(t, p, pluginapi.ExecutorRequest{Model: "test/reasoner", Payload: []byte(`{"messages":[],"reasoning_effort":` + value + `}`)})
+			regressionBadRequest(t, p, pluginapi.ExecutorRequest{Model: "cmdcode-go/reasoner", Payload: []byte(`{"messages":[],"reasoning_effort":` + value + `}`)})
 		})
 	}
 }
@@ -101,7 +101,7 @@ func TestReasoningMissingAndMalformed(t *testing.T) {
 func TestReasoningResponsesTranslationFallback(t *testing.T) {
 	p := regressionPlugin(t)
 	p.Models = NewModelRegistry([]modelDef{{id: "xiaomi/mimo-v2.6-pro"}}, &http.Client{Transport: regressionNoNetwork{}})
-	const model = "cmdcode-go/xiaomi/mimo-v2.6-pro"
+	const model = "cmdcode-go/mimo-v2.6-pro"
 	for _, effort := range []string{"none", "low", "medium", "high", "xhigh", "max"} {
 		for _, stream := range []bool{false, true} {
 			t.Run(fmt.Sprintf("%s/stream=%v", effort, stream), func(t *testing.T) {
