@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "2b70981ec9d4bb819e2e1c780deb37a1de91616a21d9de88a96c04e3342ec87b",
+  "source_sha256": "9359a9aa617b7e7cf4248464f357eac6d8e25d2de4bce7c18b6047ced8a8686b",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "e6c837bf2627700c11c067d1477a7f6d1f6ebb223a40286209f42419c42ca9bd",
+  "models_dev_sha256": "348e677fd03012e671cba8c513d3798e5913f15c5394e2bfaab51a4e2b25a5b7",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 95,
-    "entitled": 57
+    "catalog": 97,
+    "entitled": 59
   },
   "models": [
     {
@@ -122,7 +122,7 @@
     },
     {
       "id": "deepseek/deepseek-v4.1-flash",
-      "display": "DeepSeek V4.1 Flash",
+      "display": "DeepSeek V4.1 Flash (latest)",
       "description": "DeepSeek V4.1 Flash model for reasoning and agentic coding",
       "min_plan": "Go",
       "min_plan_source": "command-code Go plan page",
@@ -432,6 +432,58 @@
       "metadata_match": "exact",
       "metadata_match_sources": [],
       "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "minimax/minimax-m3.1-flash-preview",
+      "display": "MiniMax M3.1 Flash Preview",
+      "description": "Frontier multimodal coding model with 1M context window and tunable thinking depth",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 512000,
+      "output_source": "modelsdev",
+      "output_ref": "models/minimax/MiniMax-M3.1-Flash-Preview",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/minimax/MiniMax-M3.1-Flash-Preview",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "minimax/minimax-m3.1-flash-preview:free",
+      "display": "MiniMax M3.1 Flash Preview",
+      "description": "Frontier multimodal coding model with 1M context window and tunable thinking depth",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 512000,
+      "output_source": "modelsdev",
+      "output_ref": "models/minimax/MiniMax-M3.1-Flash-Preview",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/minimax/MiniMax-M3.1-Flash-Preview",
+      "metadata_match": "structured_unique",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "deployment_label_difference",
       "metadata_candidates": []
     },
     {
@@ -1992,5 +2044,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-19T04:34:50Z"
+  "fetched_at": "2026-10-19T13:05:05Z"
 }
