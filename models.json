@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "9359a9aa617b7e7cf4248464f357eac6d8e25d2de4bce7c18b6047ced8a8686b",
+  "source_sha256": "1462eeccf66ca5e092e09397c171ff22923eb643b842dfa1bf04f83761bb2980",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "348e677fd03012e671cba8c513d3798e5913f15c5394e2bfaab51a4e2b25a5b7",
+  "models_dev_sha256": "4ebe267504b8a79399ae7fd2afca27223a54142069c1d408d1e89087a0492bb9",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 97,
-    "entitled": 59
+    "catalog": 96,
+    "entitled": 58
   },
   "models": [
     {
@@ -435,8 +435,8 @@
       "metadata_candidates": []
     },
     {
-      "id": "minimax/minimax-m3.1-flash-preview",
-      "display": "MiniMax M3.1 Flash Preview",
+      "id": "minimax/minimax-m3.1-flash",
+      "display": "MiniMax M3.1 Flash",
       "description": "Frontier multimodal coding model with 1M context window and tunable thinking depth",
       "min_plan": "Go",
       "min_plan_source": "command-code Go plan page",
@@ -444,25 +444,40 @@
       "context_source": "modelsdev",
       "output": 512000,
       "output_source": "modelsdev",
-      "output_ref": "models/minimax/MiniMax-M3.1-Flash-Preview",
+      "output_ref": "models/minimax/MiniMax-M3.1-Flash",
       "vision": true,
       "vision_source": "modelsdev",
       "reasoning": true,
       "reasoning_source": "modelsdev",
       "tool_call": true,
       "tool_call_source": "modelsdev",
-      "reasoning_options_reference": null,
+      "reasoning_options_reference": {
+        "provider": "minimax",
+        "model_id": "MiniMax-M3.1-Flash",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      },
       "reasoning_efforts": [],
       "reasoning_efforts_source": "unresolved",
-      "metadata_ref": "models/minimax/MiniMax-M3.1-Flash-Preview",
+      "metadata_ref": "models/minimax/MiniMax-M3.1-Flash",
       "metadata_match": "exact",
       "metadata_match_sources": [],
       "metadata_match_reason": "",
       "metadata_candidates": []
     },
     {
-      "id": "minimax/minimax-m3.1-flash-preview:free",
-      "display": "MiniMax M3.1 Flash Preview",
+      "id": "minimax/minimax-m3.1-flash:free",
+      "display": "MiniMax M3.1 Flash",
       "description": "Frontier multimodal coding model with 1M context window and tunable thinking depth",
       "min_plan": "Go",
       "min_plan_source": "command-code Go plan page",
@@ -470,20 +485,38 @@
       "context_source": "modelsdev",
       "output": 512000,
       "output_source": "modelsdev",
-      "output_ref": "models/minimax/MiniMax-M3.1-Flash-Preview",
+      "output_ref": "models/minimax/MiniMax-M3.1-Flash",
       "vision": true,
       "vision_source": "modelsdev",
       "reasoning": true,
       "reasoning_source": "modelsdev",
       "tool_call": true,
       "tool_call_source": "modelsdev",
-      "reasoning_options_reference": null,
+      "reasoning_options_reference": {
+        "provider": "minimax",
+        "model_id": "MiniMax-M3.1-Flash",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      },
       "reasoning_efforts": [],
       "reasoning_efforts_source": "unresolved",
-      "metadata_ref": "models/minimax/MiniMax-M3.1-Flash-Preview",
-      "metadata_match": "structured_unique",
-      "metadata_match_sources": [],
-      "metadata_match_reason": "deployment_label_difference",
+      "metadata_ref": "models/minimax/MiniMax-M3.1-Flash",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/kilo/models/minimax/minimax-m3.1-flash:free",
+        "providers/openrouter/models/minimax/minimax-m3.1-flash:free"
+      ],
+      "metadata_match_reason": "",
       "metadata_candidates": []
     },
     {
@@ -1277,32 +1310,6 @@
       "metadata_candidates": []
     },
     {
-      "id": "stealth/cat-jam:free",
-      "display": "Cat Jam",
-      "description": "",
-      "min_plan": "Go",
-      "min_plan_source": "command-code Go plan page",
-      "context": 262144,
-      "context_source": "fallback",
-      "output": 65536,
-      "output_source": "fallback",
-      "output_ref": "",
-      "vision": null,
-      "vision_source": "unresolved",
-      "reasoning": null,
-      "reasoning_source": "unresolved",
-      "tool_call": null,
-      "tool_call_source": "unresolved",
-      "reasoning_options_reference": null,
-      "reasoning_efforts": [],
-      "reasoning_efforts_source": "unresolved",
-      "metadata_ref": "",
-      "metadata_match": "unresolved",
-      "metadata_match_sources": [],
-      "metadata_match_reason": "no_compatible_structural_candidate",
-      "metadata_candidates": []
-    },
-    {
       "id": "stealth/glyph-cluster:free",
       "display": "Glyph Cluster",
       "description": "",
@@ -2044,5 +2051,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-19T13:05:05Z"
+  "fetched_at": "2026-10-19T22:18:51Z"
 }
