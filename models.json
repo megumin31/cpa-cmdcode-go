@@ -4,7 +4,7 @@
   "source_url": "https://commandcode.ai/docs/plans/go",
   "source_sha256": "1462eeccf66ca5e092e09397c171ff22923eb643b842dfa1bf04f83761bb2980",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "4ebe267504b8a79399ae7fd2afca27223a54142069c1d408d1e89087a0492bb9",
+  "models_dev_sha256": "0dbd22061fc4c50d0fef1c1fa663a8ec8ac35a1486defde9f2377fb74817f029",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
@@ -871,7 +871,9 @@
       "metadata_ref": "models/nvidia/nemotron-3.5-super-vl-120b-a12b",
       "metadata_match": "provider_canonical",
       "metadata_match_sources": [
-        "providers/nebius/models/nvidia/Nemotron-3.5-Super-VL"
+        "providers/nebius/models/nvidia/Nemotron-3.5-Super-VL",
+        "providers/openrouter/models/nvidia/nemotron-3.5-super-vl",
+        "providers/vercel/models/nvidia/nemotron-3.5-super-vl"
       ],
       "metadata_match_reason": "",
       "metadata_candidates": []
@@ -1032,7 +1034,7 @@
       "min_plan_source": "command-code Go plan page",
       "context": 1000000,
       "context_source": "modelsdev",
-      "output": 65536,
+      "output": 131072,
       "output_source": "modelsdev",
       "output_ref": "models/alibaba/qwen3.7-max",
       "vision": false,
@@ -1631,7 +1633,8 @@
             "values": [
               "low",
               "medium",
-              "high"
+              "high",
+              "xhigh"
             ]
           }
         ]
@@ -1953,6 +1956,9 @@
         "model_id": "glm-5.2",
         "options": [
           {
+            "type": "toggle"
+          },
+          {
             "type": "effort",
             "values": [
               "high",
@@ -1990,6 +1996,9 @@
         "provider": "zhipuai",
         "model_id": "glm-5.2",
         "options": [
+          {
+            "type": "toggle"
+          },
           {
             "type": "effort",
             "values": [
@@ -2051,5 +2060,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-19T22:18:51Z"
+  "fetched_at": "2026-10-20T04:43:52Z"
 }
