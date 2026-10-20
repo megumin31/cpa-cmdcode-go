@@ -4,7 +4,7 @@
   "source_url": "https://commandcode.ai/docs/plans/go",
   "source_sha256": "1462eeccf66ca5e092e09397c171ff22923eb643b842dfa1bf04f83761bb2980",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "0dbd22061fc4c50d0fef1c1fa663a8ec8ac35a1486defde9f2377fb74817f029",
+  "models_dev_sha256": "78614b66740b7455671c80d6e5cfea1b6a4eda058b2e201a603cc558b48bb58c",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
@@ -871,6 +871,7 @@
       "metadata_ref": "models/nvidia/nemotron-3.5-super-vl-120b-a12b",
       "metadata_match": "provider_canonical",
       "metadata_match_sources": [
+        "providers/kilo/models/nvidia/nemotron-3.5-super-vl",
         "providers/nebius/models/nvidia/Nemotron-3.5-Super-VL",
         "providers/openrouter/models/nvidia/nemotron-3.5-super-vl",
         "providers/vercel/models/nvidia/nemotron-3.5-super-vl"
@@ -2060,5 +2061,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-20T04:43:52Z"
+  "fetched_at": "2026-10-20T11:30:27Z"
 }
