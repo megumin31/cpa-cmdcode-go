@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "1462eeccf66ca5e092e09397c171ff22923eb643b842dfa1bf04f83761bb2980",
+  "source_sha256": "231e38a449ffb6a6820124ccb5e3b01fa2caa18a90c4a4e5e2c118270678d155",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "e52102d7eb18ca66c32cf9050b381cce460945d64017ed071fe80428c9ccef54",
+  "models_dev_sha256": "acf1c4b8671f1123c6034c9f6f9f321ce6afe55f312f0a3c8f9b0d21ac524ab3",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 96,
-    "entitled": 58
+    "catalog": 98,
+    "entitled": 60
   },
   "models": [
     {
@@ -877,6 +877,58 @@
         "providers/vercel/models/nvidia/nemotron-3.5-super-vl"
       ],
       "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "ornith/ornith-1.5-122b",
+      "display": "Ornith 1.5 122B",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
+      "metadata_candidates": []
+    },
+    {
+      "id": "ornith/ornith-1.5-122b:free",
+      "display": "Ornith 1.5 122B",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
       "metadata_candidates": []
     },
     {
@@ -2061,5 +2113,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-20T16:59:00Z"
+  "fetched_at": "2026-10-20T21:34:14Z"
 }
