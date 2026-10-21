@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "ce1e48ce5b167aef47881498b35fa5788ea06e552dbb86d2ccd2fea3bfb6a854",
+  "source_sha256": "2f4dc299effd51dbd4857d8f4562f6ed9a98db2bcef9ff2397346b572f3feac7",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "684df1f5b0f889ff1d8d822de2d7dfc22e643fa9b752d342ee78b50f77c8e4e6",
+  "models_dev_sha256": "6807c9fb213e86af19f2c5d7bd555fdf9eb0809173ce70450473f12a9092e1bf",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
@@ -828,7 +828,17 @@
         "model_id": "nvidia/nemotron-3-ultra-550b-a55b",
         "options": [
           {
-            "type": "toggle"
+            "type": "effort",
+            "values": [
+              "none",
+              "medium",
+              "high"
+            ]
+          },
+          {
+            "type": "budget_tokens",
+            "min": -1,
+            "max": 32768
           }
         ]
       },
@@ -2132,5 +2142,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-21T11:42:28Z"
+  "fetched_at": "2026-10-21T17:07:54Z"
 }
