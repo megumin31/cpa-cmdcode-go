@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "d3fcdf0cebd788a29dd16260199cc4e3ac6a68110a7cf1c3b65e6c4bbcd11b5f",
+  "source_sha256": "ce1e48ce5b167aef47881498b35fa5788ea06e552dbb86d2ccd2fea3bfb6a854",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "5e92ae12297deb144f032df42eded8ac218da9da70fcb79b75eea8e3c09e4f78",
+  "models_dev_sha256": "684df1f5b0f889ff1d8d822de2d7dfc22e643fa9b752d342ee78b50f77c8e4e6",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
@@ -1652,7 +1652,25 @@
       "reasoning_source": "modelsdev",
       "tool_call": true,
       "tool_call_source": "modelsdev",
-      "reasoning_options_reference": null,
+      "reasoning_options_reference": {
+        "provider": "thinkingmachines",
+        "model_id": "thinkingmachines/Inkling-Small",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      },
       "reasoning_efforts": [],
       "reasoning_efforts_source": "unresolved",
       "metadata_ref": "models/thinkingmachines/inkling-small",
@@ -2114,5 +2132,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-21T04:40:42Z"
+  "fetched_at": "2026-10-21T11:42:28Z"
 }
