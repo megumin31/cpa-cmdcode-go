@@ -2,9 +2,9 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "cd3e14733142997f96da1b1840bb495655b11d2dc6f294c54a513f152d335b2e",
+  "source_sha256": "f0a3956dc04125405c40bd679c208748ed77304b8cefc94583d67174418295d4",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "0d9362b0a02a89730d2fe383d8417a8dcda3575cd3d20989f80a6dc4ae6d852e",
+  "models_dev_sha256": "657a64a273b6d8e6a678b011a0541e87186811bcaaf7347a6c07b4da56a418ed",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
@@ -2072,5 +2072,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-22T17:06:52Z"
+  "fetched_at": "2026-10-22T21:31:54Z"
 }
