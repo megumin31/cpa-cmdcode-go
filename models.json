@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "033ee0c7eafa33e0f1a276823413b8b7237c8f3671d6d8805998c7b5e0a9c024",
+  "source_sha256": "6c709585b10ba734fee630b2ccd51caffd9e1be6d65862f1364d89f1f7984a1e",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "8fc825103684ad13a17784bbe898802692addaf680860fc83c0803020cb6b0e9",
+  "models_dev_sha256": "185c40eec115116c2440e24579998177b5583a2b21f6873b5086666b98f0603c",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 98,
-    "entitled": 60
+    "catalog": 96,
+    "entitled": 58
   },
   "models": [
     {
@@ -476,50 +476,6 @@
       "metadata_candidates": []
     },
     {
-      "id": "minimax/minimax-m3.1-flash:free",
-      "display": "MiniMax M3.1 Flash",
-      "description": "Frontier multimodal coding model with 1M context window and tunable thinking depth",
-      "min_plan": "Go",
-      "min_plan_source": "command-code Go plan page",
-      "context": 1000000,
-      "context_source": "modelsdev",
-      "output": 512000,
-      "output_source": "modelsdev",
-      "output_ref": "models/minimax/MiniMax-M3.1-Flash",
-      "vision": true,
-      "vision_source": "modelsdev",
-      "reasoning": true,
-      "reasoning_source": "modelsdev",
-      "tool_call": true,
-      "tool_call_source": "modelsdev",
-      "reasoning_options_reference": {
-        "provider": "minimax",
-        "model_id": "MiniMax-M3.1-Flash",
-        "options": [
-          {
-            "type": "effort",
-            "values": [
-              "low",
-              "medium",
-              "high",
-              "xhigh",
-              "max"
-            ]
-          }
-        ]
-      },
-      "reasoning_efforts": [],
-      "reasoning_efforts_source": "unresolved",
-      "metadata_ref": "models/minimax/MiniMax-M3.1-Flash",
-      "metadata_match": "provider_canonical",
-      "metadata_match_sources": [
-        "providers/kilo/models/minimax/minimax-m3.1-flash:free",
-        "providers/openrouter/models/minimax/minimax-m3.1-flash:free"
-      ],
-      "metadata_match_reason": "",
-      "metadata_candidates": []
-    },
-    {
       "id": "MiniMaxAI/MiniMax-M2.5",
       "display": "MiniMax M2.5",
       "description": "Prior MiniMax coding model for agent workflows, office edits, and automation",
@@ -892,32 +848,6 @@
     },
     {
       "id": "ornith/ornith-1.5-122b",
-      "display": "Ornith 1.5 122B",
-      "description": "",
-      "min_plan": "Go",
-      "min_plan_source": "command-code Go plan page",
-      "context": 262144,
-      "context_source": "fallback",
-      "output": 65536,
-      "output_source": "fallback",
-      "output_ref": "",
-      "vision": null,
-      "vision_source": "unresolved",
-      "reasoning": null,
-      "reasoning_source": "unresolved",
-      "tool_call": null,
-      "tool_call_source": "unresolved",
-      "reasoning_options_reference": null,
-      "reasoning_efforts": [],
-      "reasoning_efforts_source": "unresolved",
-      "metadata_ref": "",
-      "metadata_match": "unresolved",
-      "metadata_match_sources": [],
-      "metadata_match_reason": "no_compatible_structural_candidate",
-      "metadata_candidates": []
-    },
-    {
-      "id": "ornith/ornith-1.5-122b:free",
       "display": "Ornith 1.5 122B",
       "description": "",
       "min_plan": "Go",
@@ -2142,5 +2072,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-22T04:37:44Z"
+  "fetched_at": "2026-10-22T11:45:49Z"
 }
