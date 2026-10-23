@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "f0a3956dc04125405c40bd679c208748ed77304b8cefc94583d67174418295d4",
+  "source_sha256": "e6d487be4b0003f31c6d40bcc9645f6183129f49fe10178a9add3f53916067d3",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "657a64a273b6d8e6a678b011a0541e87186811bcaaf7347a6c07b4da56a418ed",
+  "models_dev_sha256": "540728e49f18567275c973ba712282b00c6aac9ba48fa0cdf75320a99c4c1c7c",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 96,
-    "entitled": 58
+    "catalog": 94,
+    "entitled": 56
   },
   "models": [
     {
@@ -1660,74 +1660,6 @@
       "metadata_candidates": []
     },
     {
-      "id": "xiaomi/mimo-v2.5",
-      "display": "MiMo V2.5",
-      "description": "Open MiMo model for multimodal coding agents and long-context automation",
-      "min_plan": "Go",
-      "min_plan_source": "command-code Go plan page",
-      "context": 1048576,
-      "context_source": "modelsdev",
-      "output": 131072,
-      "output_source": "modelsdev",
-      "output_ref": "models/xiaomi/mimo-v2.5",
-      "vision": true,
-      "vision_source": "modelsdev",
-      "reasoning": true,
-      "reasoning_source": "modelsdev",
-      "tool_call": true,
-      "tool_call_source": "modelsdev",
-      "reasoning_options_reference": {
-        "provider": "xiaomi",
-        "model_id": "mimo-v2.5",
-        "options": [
-          {
-            "type": "toggle"
-          }
-        ]
-      },
-      "reasoning_efforts": [],
-      "reasoning_efforts_source": "unresolved",
-      "metadata_ref": "models/xiaomi/mimo-v2.5",
-      "metadata_match": "exact",
-      "metadata_match_sources": [],
-      "metadata_match_reason": "",
-      "metadata_candidates": []
-    },
-    {
-      "id": "xiaomi/mimo-v2.5-pro",
-      "display": "MiMo V2.5 Pro",
-      "description": "Stronger MiMo Pro tier for multimodal reasoning and coding-agent execution",
-      "min_plan": "Go",
-      "min_plan_source": "command-code Go plan page",
-      "context": 1048576,
-      "context_source": "modelsdev",
-      "output": 131072,
-      "output_source": "modelsdev",
-      "output_ref": "models/xiaomi/mimo-v2.5-pro",
-      "vision": false,
-      "vision_source": "modelsdev",
-      "reasoning": true,
-      "reasoning_source": "modelsdev",
-      "tool_call": true,
-      "tool_call_source": "modelsdev",
-      "reasoning_options_reference": {
-        "provider": "xiaomi",
-        "model_id": "mimo-v2.5-pro",
-        "options": [
-          {
-            "type": "toggle"
-          }
-        ]
-      },
-      "reasoning_efforts": [],
-      "reasoning_efforts_source": "unresolved",
-      "metadata_ref": "models/xiaomi/mimo-v2.5-pro",
-      "metadata_match": "exact",
-      "metadata_match_sources": [],
-      "metadata_match_reason": "",
-      "metadata_candidates": []
-    },
-    {
       "id": "xiaomi/mimo-v2.6-flash",
       "display": "MiMo V2.6 Flash",
       "description": "MiMo Flash model for multimodal coding agents and long-context automation",
@@ -2026,8 +1958,7 @@
       "metadata_match": "provider_canonical",
       "metadata_match_sources": [
         "providers/baseten/models/zai-org/GLM-5.2-Fast",
-        "providers/commandcode/models/zai-org/GLM-5.2-Fast",
-        "providers/pioneer/models/zai-org/GLM-5.2-Fast"
+        "providers/commandcode/models/zai-org/GLM-5.2-Fast"
       ],
       "metadata_match_reason": "",
       "metadata_candidates": []
@@ -2072,5 +2003,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-22T21:31:54Z"
+  "fetched_at": "2026-10-23T04:43:51Z"
 }
