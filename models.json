@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "e6d487be4b0003f31c6d40bcc9645f6183129f49fe10178a9add3f53916067d3",
+  "source_sha256": "82dd04b4b817aa3ca46db16b08ed3ff179aa56f80da696c81a4b35be24d3b5b6",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "2ea29a72270055437e8a8269545cf18ba3589156577a85da497a1d1aa3d56cef",
+  "models_dev_sha256": "addb2a174d971ded339f3db216674a43cf87d54010a2d4a51172cab8aae7677f",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 94,
-    "entitled": 56
+    "catalog": 95,
+    "entitled": 57
   },
   "models": [
     {
@@ -757,6 +757,45 @@
       "reasoning_efforts": [],
       "reasoning_efforts_source": "unresolved",
       "metadata_ref": "models/moonshotai/kimi-k3",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "moonshotai/Kimi-K3.1-Pro",
+      "display": "Kimi K3.1 Pro",
+      "description": "Multimodal Kimi model with 1M context and always-on reasoning for coding, 3D creation, financial research, and agentic work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/moonshotai/kimi-k3.1-pro",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "moonshotai",
+        "model_id": "kimi-k3.1-pro",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "high",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/moonshotai/kimi-k3.1-pro",
       "metadata_match": "exact",
       "metadata_match_sources": [],
       "metadata_match_reason": "",
@@ -2003,5 +2042,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-23T17:02:40Z"
+  "fetched_at": "2026-10-23T21:21:30Z"
 }
