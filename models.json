@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "b51b25a0fb62d9da5153d6760de48ac4e921dcaf7b6c7686a4cdb584afd5d849",
+  "source_sha256": "6513ffcbaeec0e0a9659214e318a0295b0972307c8c0135f3c16b07f52c777d7",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "e978e89d305bc8059006e1ab9dfa35627c73e86bb6543360ef2cd69c4391f6f0",
+  "models_dev_sha256": "3320dec2971daa4245569291aa3d2564c863c88aa59df96fc639e352a177207c",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 96,
-    "entitled": 57
+    "catalog": 97,
+    "entitled": 58
   },
   "models": [
     {
@@ -283,6 +283,32 @@
       "metadata_match": "exact",
       "metadata_match_sources": [],
       "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "inclusionai/ling-3.1-flash-1019:free",
+      "display": "Ling 3.1 Flash 1019",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
       "metadata_candidates": []
     },
     {
@@ -941,11 +967,9 @@
       "reasoning_efforts": [],
       "reasoning_efforts_source": "unresolved",
       "metadata_ref": "models/poolside/laguna-s-2.1",
-      "metadata_match": "provider_canonical",
-      "metadata_match_sources": [
-        "providers/vercel/models/poolside/laguna-s-2.1-free"
-      ],
-      "metadata_match_reason": "",
+      "metadata_match": "structured_unique",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "deployment_label_difference",
       "metadata_candidates": []
     },
     {
@@ -2043,5 +2067,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-10-30T22:14:51Z"
+  "fetched_at": "2026-10-31T05:33:24Z"
 }
