@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "86cad19f67966a584ee28d6682273a528470e52bbdf91028b98219e223b3835d",
+  "source_sha256": "049393cdd2c2ee95c9ae6a8e9a813c1b91ec3b56086cf98963f0f15b77f52f79",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "6063c3d932d0621533faae2d842f97d7b1b9f74c203975eaea852d8c08cf7668",
+  "models_dev_sha256": "13d7f316dabfc8150532e04a995c2778b2fdd668fd239cf7d2cd5276bf3b3ccc",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 97,
-    "entitled": 58
+    "catalog": 98,
+    "entitled": 59
   },
   "models": [
     {
@@ -286,7 +286,7 @@
       "metadata_candidates": []
     },
     {
-      "id": "inclusionai/ling-3.1-flash-1019:free",
+      "id": "inclusionai/ling-3.1-flash-1019",
       "display": "Ling 3.1 Flash 1019",
       "description": "",
       "min_plan": "Go",
@@ -1370,6 +1370,32 @@
       "metadata_candidates": []
     },
     {
+      "id": "stealth/crouton-alpha",
+      "display": "Crouton Alpha",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
+      "metadata_candidates": []
+    },
+    {
       "id": "stealth/glyph-cluster:free",
       "display": "Glyph Cluster",
       "description": "",
@@ -2067,5 +2093,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-11-03T14:05:29Z"
+  "fetched_at": "2026-11-03T23:16:49Z"
 }
