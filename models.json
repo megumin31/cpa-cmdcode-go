@@ -2,16 +2,16 @@
   "schema_version": 1,
   "source": "command-code Go plan page",
   "source_url": "https://commandcode.ai/docs/plans/go",
-  "source_sha256": "049393cdd2c2ee95c9ae6a8e9a813c1b91ec3b56086cf98963f0f15b77f52f79",
+  "source_sha256": "3ceed3c3f9d8f371e12dccc96b0ebcde8432b848c1da20d37e96e5c572f975aa",
   "models_dev_url": "https://models.dev/catalog.json",
-  "models_dev_sha256": "b79763490ce3111508d8c9b171f93e2678ee345471d5e70968cfe078b892eb87",
+  "models_dev_sha256": "fe72e86827672d9fda8fc20638e036de3aa9a69f72adfce746732c13b1d3285d",
   "fallback_profile": {
     "context": 262144,
     "output": 65536
   },
   "counts": {
-    "catalog": 98,
-    "entitled": 59
+    "catalog": 97,
+    "entitled": 58
   },
   "models": [
     {
@@ -936,40 +936,6 @@
       "metadata_match": "unresolved",
       "metadata_match_sources": [],
       "metadata_match_reason": "no_compatible_structural_candidate",
-      "metadata_candidates": []
-    },
-    {
-      "id": "poolside/laguna-s-2.1-free",
-      "display": "Laguna S 2.1",
-      "description": "Agentic coding model from Poolside in the XS size class for local deployment",
-      "min_plan": "Go",
-      "min_plan_source": "command-code Go plan page",
-      "context": 1048576,
-      "context_source": "modelsdev",
-      "output": 32768,
-      "output_source": "modelsdev",
-      "output_ref": "models/poolside/laguna-s-2.1",
-      "vision": false,
-      "vision_source": "modelsdev",
-      "reasoning": true,
-      "reasoning_source": "modelsdev",
-      "tool_call": true,
-      "tool_call_source": "modelsdev",
-      "reasoning_options_reference": {
-        "provider": "poolside",
-        "model_id": "poolside/laguna-s-2.1",
-        "options": [
-          {
-            "type": "toggle"
-          }
-        ]
-      },
-      "reasoning_efforts": [],
-      "reasoning_efforts_source": "unresolved",
-      "metadata_ref": "models/poolside/laguna-s-2.1",
-      "metadata_match": "structured_unique",
-      "metadata_match_sources": [],
-      "metadata_match_reason": "deployment_label_difference",
       "metadata_candidates": []
     },
     {
@@ -2093,5 +2059,5 @@
       "metadata_candidates": []
     }
   ],
-  "fetched_at": "2026-11-04T14:26:09Z"
+  "fetched_at": "2026-11-04T23:37:27Z"
 }
