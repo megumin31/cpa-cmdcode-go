@@ -2,7 +2,7 @@ name: Build Linux plugins
 
 'on':
   push:
-    branches: ['**']
+    branches: ['**', '!models-data']
     tags: ['v*']
   pull_request:
   workflow_dispatch:

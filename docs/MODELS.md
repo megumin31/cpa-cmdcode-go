@@ -15,8 +15,9 @@
   generated JSON; no npm package, CLI execution, account or inference is required.
 - The page is public website data, **not a promised stable API**. Downloading and
   parsing are separate functions so a future official structured Go endpoint can
-  replace it. `fetched_at` denotes the generation/fetch pass; with local snapshots
-  it is the generation time, not a claim that the snapshots were just downloaded.
+  replace it. `fetched_at` denotes the fetch/generation pass that last changed the published
+  Go roster or its selected metadata. Unchanged passes retain the previous bytes
+  and provenance. With local snapshots it is generation time, not download time.
 
 名单只来自官方 Go 页面内嵌的原始 ID，不依赖 Provider API 交集或 npm 解包。
 页面加载前的原始 HTML 已含数据，不代表服务端必然写死或不存在内部数据源。
@@ -126,36 +127,82 @@ CPA 列表仅省略厂商路径，保留模型名大小写和变体后缀；上�
 13 条无可信原厂参考。MiMo 的 toggle 不能解释为 Command Code 支持关闭推理，Kimi 的
 原厂 effort 列表也不能冒充 Command Code 的已验证硬能力。未做真实收费调用验证。
 
+## Data branch and pinned fallback / 数据分支与内置快照
+
+The live endpoint is
+https://raw.githubusercontent.com/megumin31/cpa-cmdcode-go/models-data/models.json.
+`models-data` contains only `models.json`. Each publication replaces its head with
+one **parentless commit**. Only this ref is rewritten, using an explicit
+`--force-with-lease=refs/heads/models-data:<observed SHA>` compare-and-swap; the
+initial publication requires the ref not to exist. A conflicting writer fails
+without overwriting it or automatically retrying. The branch has one reachable
+commit, but unreachable objects can remain on GitHub until GitHub reclaims them.
+This does not purge historical model commits already reachable from `main`.
+
+The code branch keeps `data/models.snapshot.json` and `go/models_generated.go`
+as a pinned release fallback. The Go file includes the snapshot's exact SHA-256.
+Ordinary builds verify this pair **offline**, without fetching a moving data ref.
+Routine roster refreshes do not change either file, touch `main`, create tags,
+produce plugin artifacts, or publish a Release. Refresh the pinned fallback as a
+reviewed source change when preparing a later code release if desired.
+`main/models.json` is removed; no legacy-client endpoint is maintained.
+
 ## Update and failure behavior / 更新与失败处理
 
-`.github/workflows/models.yml` runs at `17 */6 * * *` UTC and on manual dispatch.
-It fetches only the two public sources, validates both, generates JSON and compiled
-Go fallback data, runs the offline quality gate, then commits only those two outputs.
-Downloads have timeouts, bounded retries, response-type and 32 MiB size checks.
-Failures and large unexpected roster drift stop before replacing generated outputs.
-Small normal additions are permitted; reviewed large changes require the workflow's
-`allow_large_drift` input. Previous metadata is not silently carried into a new match.
+`.github/workflows/models.yml` runs from `main` at `17 */6 * * *` UTC and on manual
+dispatch. It reads the current data branch and saves its exact head, then downloads
+the two public sources and validates the generated candidate. Python fixtures test
+extraction and publication safety; an offline Go test checks the candidate using
+the actual runtime parser and model registration. Publication occurs only after
+those checks. The workflow shares one concurrency group for all data updates;
+the Git lease separately protects against other writers.
 
-Both files are validated and staged before replacement. Each `os.replace` is atomic
-for one file; ordinary replacement errors roll back prior writes. **Two replacements
-are not a cross-file transaction**: a process kill or storage failure can leave a mixed
-pair. The Go file embeds the exact JSON SHA-256, and `--check` regenerates the expected
-Go bytes to detect a mismatch. CI blocks mixed pairs before commit/build publication.
-Runtime reads one complete JSON snapshot and keeps its last good catalog on failure;
-it does not combine partially written JSON with a mutable Go source file.
+Only Go membership or its relevant metadata changes cause publication. Changes to
+whole-page HTML, unrelated models.dev records, total all-plan catalog counts, or
+fetch timestamps do not. An unchanged candidate retains the **exact prior bytes**,
+including provenance from its last meaningful update. A changed candidate records
+the new complete-source hashes and fetch time. Download failures, invalid data,
+short-name collisions, and unexpectedly large roster drift block publication.
+Reviewed large changes require the workflow's `allow_large_drift` input. Fetches
+have timeouts, bounded retries, response-type checks and a 32 MiB source limit;
+the runtime candidate check additionally enforces the 4 MiB roster limit.
+
+Runtime uses the new URL by default. It caches a validated snapshot in memory for
+6 hours and uses `If-None-Match` / `If-Modified-Since` on later refreshes when the
+server provides validators. HTTP 304 retains the same snapshot and renews its TTL.
+Invalid responses cannot replace the snapshot or its validators; unsolicited 304
+responses fail. Reconfiguration clears validators, so they do not cross sources.
+Failures keep the last good in-memory roster and retry no more often than every
+5 minutes. A new process starts with the pinned compiled fallback; there is no
+persistent disk cache. `models_file` still takes precedence, and a refresh interval
+of `0` selects only the compiled roster. Explicit old `models_url` overrides must
+be removed or changed when upgrading.
 
 ```bash
-# Download the public sources and refresh both outputs.
-python3 scripts/extract-models.py --prev models.json
+# Produce a live JSON candidate without touching the compiled fallback.
+python3 scripts/publish-models.py prepare
+python3 scripts/extract-models.py --json-only \
+  --prev build/model-data/previous.json --out build/model-data/candidate.json
+# The workflow validates it with TestPublishedModelCandidate before publication.
 
-# Reproduce offline from complete captured HTTP responses.
-python3 scripts/extract-models.py --go-page /path/to/go.html \
-  --models-dev /path/to/catalog.json --prev models.json
-
-# No network; verify the checked-in pair and run fixture tests.
+# Reproduce the pinned release fallback byte-for-byte, with no network.
+python3 scripts/extract-models.py --from-json data/models.snapshot.json
 python3 scripts/extract-models.py --check
-python3 -m unittest discover -s scripts -p 'test_extract_models.py' -v
+
+# Optional reviewed refresh of the release fallback from an exact data commit.
+git fetch origin refs/heads/models-data
+DATA_SHA=$(git rev-parse FETCH_HEAD)
+git show "$DATA_SHA:models.json" > data/models.snapshot.json
+python3 scripts/extract-models.py --from-json data/models.snapshot.json
+# Review both changed files, then run scripts/ci-check.sh before committing.
+
+# Offline extractor/publication fixtures.
+python3 -m unittest discover -s scripts -p 'test_*models.py' -v
 ```
+
+Both fallback files are staged before replacement. Individual `os.replace` calls
+are atomic; ordinary errors roll back earlier writes. They are not a cross-file
+transaction, so `--check` catches any mixed pair before a code build is published.
 
 Fixture provenance is documented in `scripts/fixtures/README.md`. The filtered
 models.dev fixture is intentionally incomplete and must not be used as a production

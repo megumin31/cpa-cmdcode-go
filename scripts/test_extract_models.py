@@ -360,6 +360,63 @@ class ExtractTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 extract.check_generated(out, gen)
 
+    def test_semantic_identity_ignores_only_observation_noise(self):
+        doc = {"schema_version": 1, "source": "source", "models": [{"id": "test/a", "context": 100}],
+               "counts": {"catalog": 90, "entitled": 1}, "source_sha256": "old",
+               "models_dev_sha256": "old", "fetched_at": "old"}
+        noise = copy.deepcopy(doc)
+        noise.update(source_sha256="new", models_dev_sha256="new", fetched_at="new")
+        noise["counts"]["catalog"] = 100
+        self.assertEqual(extract.semantic_catalog(doc), extract.semantic_catalog(noise))
+        for patch in ({"context": 200}, {"description": "changed"}, {"metadata_ref": "different"}):
+            changed = copy.deepcopy(noise)
+            changed["models"][0].update(patch)
+            self.assertNotEqual(extract.semantic_catalog(doc), extract.semantic_catalog(changed))
+        noise["counts"]["entitled"] = 2
+        self.assertNotEqual(extract.semantic_catalog(doc), extract.semantic_catalog(noise))
+
+    def test_json_only_preserves_exact_bytes_for_irrelevant_source_changes(self):
+        with tempfile.TemporaryDirectory() as root:
+            root = Path(root)
+            out, gen = root / "models.json", root / "models.go"
+            html, metadata = root / "page.html", root / "catalog.json"
+            html.write_text(self.html)
+            metadata.write_text(self.metadata_text)
+            args = [str(SCRIPT), "--json-only", "--go-page", str(html),
+                    "--models-dev", str(metadata), "--prev", str(out),
+                    "--out", str(out), "--gen", str(gen)]
+            gen.write_text("do not touch the pinned fallback")
+            with mock.patch.object(sys, "argv", args):
+                extract.main()
+                first = out.read_bytes()
+                # Both complete-source hashes change, but neither change affects
+                # the Go roster or its selected metadata.
+                html.write_text(self.html + "\n<!-- unrelated site markup -->\n")
+                source = json.loads(self.metadata_text)
+                source["unrelated_catalog_metadata"] = "changed"
+                metadata.write_text(json.dumps(source))
+                extract.main()
+                self.assertEqual(first, out.read_bytes())
+                source["models"]["xiaomi/mimo-v2.6-pro"]["description"] = "Updated model reference."
+                metadata.write_text(json.dumps(source))
+                extract.main()
+                self.assertNotEqual(first, out.read_bytes())
+            self.assertEqual(gen.read_text(), "do not touch the pinned fallback")
+
+    def test_exact_snapshot_reproduces_fallback_without_network(self):
+        snapshot = SCRIPT.parent.parent / "data/models.snapshot.json"
+        with tempfile.TemporaryDirectory() as root:
+            gen = Path(root) / "models.go"
+            args = [str(SCRIPT), "--from-json", str(snapshot), "--gen", str(gen)]
+            with mock.patch.object(sys, "argv", args), mock.patch.object(extract, "fetch_source") as fetch:
+                extract.main()
+                first = gen.read_bytes()
+                extract.main()
+                fetch.assert_not_called()
+            self.assertEqual(first, gen.read_bytes())
+            self.assertEqual(first, (SCRIPT.parent.parent / "go/models_generated.go").read_bytes())
+            extract.check_generated(snapshot, gen)
+
 
 if __name__ == "__main__":
     unittest.main()

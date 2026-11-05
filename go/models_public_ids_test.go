@@ -12,7 +12,7 @@ import (
 )
 
 func TestPublicModelIDsKeepUpstreamIdentity(t *testing.T) {
-	raw, err := os.ReadFile("../models.json")
+	raw, err := os.ReadFile("../data/models.snapshot.json")
 	if err != nil {
 		t.Fatal(err)
 	}

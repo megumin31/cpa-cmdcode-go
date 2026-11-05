@@ -33,7 +33,7 @@ The plugin discovers and routes all Command Code Go entitled models. Call them u
 
 The public ID and name use only `cmdcode-go/<model_name>`, for example `cmdcode-go/Kimi-K3`. Use the same format in requests and `models` / `disable_models` configuration. Reasoning suffixes such as `cmdcode-go/Kimi-K3(high)` are supported. Old manufacturer-qualified IDs and bare model names are no longer accepted. Gateway requests still use the original upstream ID (`moonshotai/Kimi-K3`); catalogs with colliding short names are rejected.
 
-> See [models.json](models.json) for the current Go roster. Membership comes from the official Go page; capabilities are models.dev references, not verified gateway limits. Missing limits use a labeled 262,144-context / 65,536-output fallback profile. See [catalog generation and matching](docs/MODELS.md).
+> See [models-data/models.json](https://raw.githubusercontent.com/megumin31/cpa-cmdcode-go/models-data/models.json) for the current Go roster. Membership comes from the official Go page; capabilities are models.dev references, not verified gateway limits. Missing limits use a labeled 262,144-context / 65,536-output fallback profile. See [catalog generation and matching](docs/MODELS.md).
 
 ---
 
@@ -106,7 +106,15 @@ Supported options under `plugins.configs.cmdcode-go`:
 | `disable_models` | list | Denylist of models to exclude | None |
 | `models_refresh_interval` | string | Interval to check for remote catalog updates | `"6h"` (`"0"` to use compiled-in roster only) |
 | `models_file` | string | Path to a local model catalog JSON file | Unset (overrides remote URL if set) |
-| `models_url` | string | URL to fetch model catalog JSON from | `models.json` on `main` branch |
+| `models_url` | string | URL to fetch model catalog JSON from | `models.json` on `models-data` branch |
+
+The registry keeps the last validated roster in memory, checks after 6 hours by
+default, and revalidates with ETag / Last-Modified when available. Failed updates
+retain the last good roster, or the compiled fallback on a fresh process.
+The fallback is pinned in [data/models.snapshot.json](data/models.snapshot.json)
+and reproduced offline; ordinary data updates do not rebuild or release the plugin.
+The old `main/models.json` endpoint is removed. Remove or update any explicit
+`models_url` override that still points at it.
 
 ---
 

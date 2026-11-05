@@ -53,3 +53,10 @@ Tests use fake GitHub clients and synthetic ELF packaging fixtures, plus actual
 Go linker-injection checks. The native gates additionally test Go/race/vet,
 model extraction, workflows, C ABI lifecycle and provenance. No live provider
 credentials or inference calls are required. See [CI details](CI.md).
+
+## Model data and releases
+
+`models-data` refreshes independently without tags or plugin releases. Each code
+release pins `data/models.snapshot.json` and its reproducible generated Go fallback;
+builds never download a moving data branch. The first migration must seed the data
+branch before deploying clients with the new default URL. See [MODELS.md](MODELS.md).

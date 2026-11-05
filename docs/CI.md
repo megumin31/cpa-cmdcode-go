@@ -1,7 +1,8 @@
 # Native quality gate
 
 `.github/workflows/build-plugin.yml` calls the reusable `quality-gate.yml` for
-every branch push, pull request, manual branch run and `v*` tag push.
+every code-branch push, pull request, manual code-branch run and `v*` tag push.
+The `models-data` branch is explicitly excluded from push-triggered builds.
 Only a valid tag push publishes a Release after both native gates succeed;
 there is no `release.published` trigger. See [tag-driven releases](RELEASE.md).
 Branches and PRs build numeric ABI version `0.0.0` with `build_tag=dev`.
@@ -21,7 +22,7 @@ cannot be executed by its test runner:
 `GOSUMDB=off`, and runs the shared full gate:
 
 1. actionlint for all workflows, plus Bash syntax checks.
-2. Python extractor and release-publication fixture tests.
+2. Python extractor, data-branch publication and release-publication fixture tests.
 3. Go formatting, module checksum verification, vet, unit tests and race tests.
 4. A native CGO C-shared build using the filename from `go/internal/buildinfo`.
 5. The C ABI harness against that exact library: same-path reload, repeated
@@ -49,15 +50,17 @@ bash scripts/ci-check.sh
 
 Dependency preparation may need network access. The quality gate itself does
 not fetch dependencies and fails when its cached dependencies or tools are absent.
-The same gate runs on newly generated rosters on **amd64 only** before the
-scheduled/manual `models.yml` job commits them. Model refresh remains the only roster-update
-workflow; its old PR trigger is replaced by the central dual-architecture gate.
-No `workflow_run` loop or dispatch chaining is used. GitHub-token bot commits do
-not trigger another push workflow; these automated commits therefore receive
-the refresh job's amd64 precommit gate, not an automatic dual-architecture run.
-A later ordinary branch push, PR or tag push runs both architectures.
-The updater commits exactly its tested tree; if the remote branch advances,
-the non-force push fails rather than rebasing or overwriting untested changes.
+The scheduled/manual `models.yml` workflow publishes only the separate data branch.
+It runs Python extraction/publication tests and validates its candidate through the
+actual Go parser/registration test, offline after dependency preparation. It does
+not modify the pinned fallback or build/release a plugin. No `workflow_run` loop,
+dispatch chaining, or data-triggered dual-architecture build is used.
+
+Data snapshots use a parentless commit with an explicit compare-and-swap Git lease;
+concurrent ref changes fail without automatic rebasing or blind force pushes.
+Only meaningful roster/metadata changes publish. Code releases continue to use
+both complete native gates and the source commit's fixed fallback snapshot.
+See [model publication and cache behavior](MODELS.md).
 
 To prepare a CI artifact from an already committed, clean checkout:
 

@@ -33,7 +33,7 @@
 
 对外 ID 和 Name 统一使用 `cmdcode-go/<model_name>`，例如 `cmdcode-go/Kimi-K3`；请求及 `models` / `disable_models` 配置均使用此格式，支持 `(high)` 等推理等级后缀。不再接受带厂商的旧 ID 或无前缀裸名。发送给上游的 ID 仍为原始 `moonshotai/Kimi-K3`；含有重复短名的目录会被拒绝。
 
-> 当前 Go 名单参见 [models.json](models.json)。套餐归属取自官方 Go 页面，能力参数来自 models.dev 参考资料，不代表已验证的网关限制。缺失限额统一采用标注为 fallback 的 262,144 上下文 / 65,536 输出默认值。详见[目录生成与匹配说明](docs/MODELS.md)。
+> 当前 Go 名单参见 [models-data/models.json](https://raw.githubusercontent.com/megumin31/cpa-cmdcode-go/models-data/models.json)。套餐归属取自官方 Go 页面，能力参数来自 models.dev 参考资料，不代表已验证的网关限制。缺失限额统一采用标注为 fallback 的 262,144 上下文 / 65,536 输出默认值。详见[目录生成与匹配说明](docs/MODELS.md)。
 
 ---
 
@@ -106,7 +106,13 @@ curl -s http://localhost:8317/v1/models -H "Authorization: Bearer <your-cpa-api-
 | `disable_models` | list | 禁用的模型列表（黑名单） | 无 |
 | `models_refresh_interval` | string | 远程模型清单刷新间隔 | `"6h"`（设为 `"0"` 则仅使用内置编译清单） |
 | `models_file` | string | 本地模型清单 JSON 文件路径 | 无（设置后优先于远程 URL） |
-| `models_url` | string | 远程模型清单 JSON 地址 | 本仓库 `main` 分支的 `models.json` |
+| `models_url` | string | 远程模型清单 JSON 地址 | 本仓库 `models-data` 分支的 `models.json` |
+
+模型清单在内存中缓存，默认每 6 小时检查一次，并使用 ETag / Last-Modified
+进行条件请求。更新失败时保留最近一次有效清单；进程首次启动且无法下载时使用内置兜底。
+内置快照固定保存在 [data/models.snapshot.json](data/models.snapshot.json)，可离线重现，
+日常数据更新不触发插件构建或发版。旧 `main/models.json` 地址已移除；如曾显式设置
+指向旧地址的 `models_url`，请删除该覆盖项或改用新地址。
 
 ---
 

@@ -229,7 +229,7 @@ func registration() map[string]any {
 				{"Name": "cli_version", "Type": "string", "Description": "x-command-code-version fingerprint. Default tracks the reversed CLI release."},
 				{"Name": "project_slug", "Type": "string", "Description": "x-project-slug fingerprint header."},
 				{"Name": "permission_mode", "Type": "string", "Description": "Envelope permissionMode. Default standard."},
-				{"Name": "models_url", "Type": "string", "Description": "Remote models.json URL (Action-maintained). Default tracks this repo's main branch; empty = default."},
+				{"Name": "models_url", "Type": "string", "Description": "Remote models.json URL (Action-maintained). Default tracks this repo's models-data branch; empty = default."},
 				{"Name": "models_file", "Type": "string", "Description": "Local models.json path override (reloaded on change). Takes precedence over models_url."},
 				{"Name": "models_refresh_interval", "Type": "string", "Description": "Remote refresh interval (Go duration, default 6h; 0 disables remote refresh)."},
 			},

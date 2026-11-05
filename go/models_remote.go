@@ -14,7 +14,7 @@ import (
 
 const (
 	modelsSchemaVersion          = 1
-	defaultModelsURL             = "https://raw.githubusercontent.com/megumin31/cpa-cmdcode-go/main/models.json"
+	defaultModelsURL             = "https://raw.githubusercontent.com/megumin31/cpa-cmdcode-go/models-data/models.json"
 	defaultRefreshInterval       = 6 * time.Hour
 	modelsFetchTimeout           = 8 * time.Second
 	modelsMinRetryInterval       = 5 * time.Minute
@@ -52,6 +52,7 @@ type ModelRegistry struct {
 	cancel                     context.CancelFunc
 	attempted, fetched, fileMT time.Time
 	failed                     bool
+	validators                 modelValidators
 	client                     *http.Client
 	now                        func() time.Time
 }
@@ -89,6 +90,7 @@ func (r *ModelRegistry) Configure(cfg pluginConfig) {
 	r.cfg = cloneConfig(cfg)
 	r.attempted, r.fetched, r.fileMT = time.Time{}, time.Time{}, time.Time{}
 	r.failed = false
+	r.validators = modelValidators{}
 	if _, enabled := modelsRefreshInterval(cfg); !enabled {
 		r.current = r.fallback
 	}
@@ -129,14 +131,15 @@ func (r *ModelRegistry) Refresh(ctx context.Context) error {
 		return nil
 	}
 	generation := r.generation
+	validators := r.validators
 	requestCtx, cancel := context.WithTimeout(ctx, modelsFetchTimeout)
 	r.loading, r.cancel, r.attempted = true, cancel, now
 	r.mu.Unlock()
 	defer cancel()
-	raw, err := r.fetch(requestCtx, cfg)
+	result, err := r.fetch(requestCtx, cfg, validators)
 	var defs []modelDef
-	if err == nil {
-		defs, _, err = parseModelsFile(raw)
+	if err == nil && !result.notModified {
+		defs, _, err = parseModelsFile(result.raw)
 	}
 	r.mu.Lock()
 	defer r.mu.Unlock()
@@ -151,17 +154,33 @@ func (r *ModelRegistry) Refresh(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	r.current = newModelSnapshot(defs)
+	if !result.notModified {
+		r.current = newModelSnapshot(defs)
+	}
+	// Only validated responses can install HTTP cache validators. A malformed
+	// 200 must not poison the next refresh or discard the last good snapshot.
+	r.validators = result.validators
 	r.fetched, r.fileMT = r.now(), mt
 	return nil
 }
 
-func (r *ModelRegistry) fetch(ctx context.Context, cfg pluginConfig) ([]byte, error) {
+type modelValidators struct {
+	etag, lastModified string
+}
+
+type modelFetchResult struct {
+	raw         []byte
+	notModified bool
+	validators  modelValidators
+}
+
+func (r *ModelRegistry) fetch(ctx context.Context, cfg pluginConfig, validators modelValidators) (modelFetchResult, error) {
+	result := modelFetchResult{}
 	var reader io.ReadCloser
 	if cfg.ModelsFile != "" {
 		f, err := os.Open(cfg.ModelsFile)
 		if err != nil {
-			return nil, err
+			return result, err
 		}
 		reader = f
 	} else {
@@ -171,20 +190,43 @@ func (r *ModelRegistry) fetch(ctx context.Context, cfg pluginConfig) ([]byte, er
 		}
 		req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 		if err != nil {
-			return nil, err
+			return result, err
+		}
+		if validators.etag != "" {
+			req.Header.Set("If-None-Match", validators.etag)
+		}
+		if validators.lastModified != "" {
+			req.Header.Set("If-Modified-Since", validators.lastModified)
 		}
 		resp, err := r.client.Do(req)
 		if err != nil {
-			return nil, err
+			return result, err
+		}
+		if resp.StatusCode == http.StatusNotModified {
+			resp.Body.Close()
+			if validators.etag == "" && validators.lastModified == "" {
+				return result, fmt.Errorf("model list HTTP 304 without a validated cached response")
+			}
+			result.notModified, result.validators = true, validators
+			if etag := resp.Header.Get("ETag"); etag != "" {
+				result.validators.etag = etag
+			}
+			if modified := resp.Header.Get("Last-Modified"); modified != "" {
+				result.validators.lastModified = modified
+			}
+			return result, nil
 		}
 		if resp.StatusCode != http.StatusOK {
 			resp.Body.Close()
-			return nil, fmt.Errorf("model list HTTP %d", resp.StatusCode)
+			return result, fmt.Errorf("model list HTTP %d", resp.StatusCode)
 		}
+		result.validators = modelValidators{etag: resp.Header.Get("ETag"), lastModified: resp.Header.Get("Last-Modified")}
 		reader = resp.Body
 	}
 	defer reader.Close()
-	return readBounded(reader, maxRosterBytes)
+	var err error
+	result.raw, err = readBounded(reader, maxRosterBytes)
+	return result, err
 }
 
 func parseModelsFile(raw []byte) ([]modelDef, string, error) {
