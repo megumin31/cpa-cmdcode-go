@@ -1,0 +1,2063 @@
+{
+  "schema_version": 1,
+  "source": "command-code Go plan page",
+  "source_url": "https://commandcode.ai/docs/plans/go",
+  "source_sha256": "3ceed3c3f9d8f371e12dccc96b0ebcde8432b848c1da20d37e96e5c572f975aa",
+  "models_dev_url": "https://models.dev/catalog.json",
+  "models_dev_sha256": "f94032d6c07a00fe1c664d92b9b0e0cceb0f72e92a69921e8374cd6919ae75ad",
+  "fallback_profile": {
+    "context": 262144,
+    "output": 65536
+  },
+  "counts": {
+    "catalog": 97,
+    "entitled": 58
+  },
+  "models": [
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "display": "DeepSeek V4 Flash (latest)",
+      "description": "Fast DeepSeek V4 lane for economical reasoning, coding, and long-context work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 384000,
+      "output_source": "modelsdev",
+      "output_ref": "models/deepseek/deepseek-v4-flash",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/deepseek/deepseek-v4-flash",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash-fast",
+      "display": "DeepSeek V4 Flash Fast",
+      "description": "Fast DeepSeek V4 lane for economical reasoning, coding, and long-context work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 384000,
+      "output_source": "modelsdev",
+      "output_ref": "models/deepseek/deepseek-v4-flash",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/deepseek/deepseek-v4-flash",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/commandcode/models/deepseek/deepseek-v4-flash-fast"
+      ],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash-vision-exp",
+      "display": "DeepSeek V4 Flash Vision (exp)",
+      "description": "Experimental multimodal DeepSeek V4 Flash model for image understanding, coding, and agentic work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 384000,
+      "output_source": "modelsdev",
+      "output_ref": "models/deepseek/deepseek-v4-flash-vision-exp",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/deepseek/deepseek-v4-flash-vision-exp",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "deepseek/deepseek-v4-pro",
+      "display": "DeepSeek V4 Pro (latest)",
+      "description": "Open MoE flagship with million-token context for coding and long agent runs",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 384000,
+      "output_source": "modelsdev",
+      "output_ref": "models/deepseek/deepseek-v4-pro",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/deepseek/deepseek-v4-pro",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "deepseek/deepseek-v4.1-flash",
+      "display": "DeepSeek V4.1 Flash (latest)",
+      "description": "DeepSeek V4.1 Flash model for reasoning and agentic coding",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 384000,
+      "output_source": "modelsdev",
+      "output_ref": "models/deepseek/deepseek-v4.1-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/deepseek/deepseek-v4.1-flash",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "deepseek/deepseek-v4.1-flash-fast",
+      "display": "DeepSeek V4.1 Flash Fast (latest)",
+      "description": "DeepSeek V4.1 Flash model for reasoning and agentic coding",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 384000,
+      "output_source": "modelsdev",
+      "output_ref": "models/deepseek/deepseek-v4.1-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/deepseek/deepseek-v4.1-flash",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/commandcode/models/deepseek/deepseek-v4.1-flash-fast",
+        "providers/vercel/models/deepseek/deepseek-v4.1-flash-fast"
+      ],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "display": "GPT-5.6 Luna",
+      "description": "Cost-efficient GPT-5.6 model for fast, high-volume workloads",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1050000,
+      "context_source": "modelsdev",
+      "output": 128000,
+      "output_source": "modelsdev",
+      "output_ref": "models/openai/gpt-5.6-luna",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "openai",
+        "model_id": "gpt-5.6-luna",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/openai/gpt-5.6-luna",
+      "metadata_match": "unique_unqualified_id",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "gpt-6-luna",
+      "display": "GPT-6 Luna",
+      "description": "OpenAI's most efficient model for focused, high-volume tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1050000,
+      "context_source": "modelsdev",
+      "output": 128000,
+      "output_source": "modelsdev",
+      "output_ref": "models/openai/gpt-6-luna",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "openai",
+        "model_id": "gpt-6-luna",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/openai/gpt-6-luna",
+      "metadata_match": "unique_unqualified_id",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "inclusionai/ling-3.1-flash",
+      "display": "Ling 3.1 Flash",
+      "description": "Efficient model for low-latency assistance, extraction, and routine automation",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "modelsdev",
+      "output": 32768,
+      "output_source": "modelsdev",
+      "output_ref": "models/inclusionai/ling-3.1-flash",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/inclusionai/ling-3.1-flash",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "inclusionai/ling-3.1-flash-1019",
+      "display": "Ling 3.1 Flash 1019",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
+      "metadata_candidates": []
+    },
+    {
+      "id": "meituan/LongCat-2.0",
+      "display": "LongCat 2.0",
+      "description": "Meituan LongCat-2.0, a reasoning model with tool calling and a 1M-token context window",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/meituan/longcat-2.0",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "longcat",
+        "model_id": "LongCat-2.0",
+        "options": [
+          {
+            "type": "toggle"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/meituan/longcat-2.0",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "meta/muse-spark-1.2-contributor",
+      "display": "Muse Spark 1.2 Contributor",
+      "description": "Muse Spark 1.2 is a coding-focused update to Muse Spark 1.1 with improvements in code generation, complex debugging, codebase understanding, and end-to-end developer workflows.",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/meta/muse-spark-1.2",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "meta",
+        "model_id": "muse-spark-1.2-contributor",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/meta/muse-spark-1.2",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/commandcode/models/meta/muse-spark-1.2-contributor",
+        "providers/llmtr/models/meta/muse-spark-1.2-contributor",
+        "providers/meta/models/muse-spark-1.2-contributor"
+      ],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "meta/muse-spark-1.3-contributor",
+      "display": "Muse Spark 1.3 Contributor",
+      "description": "Muse Spark 1.3 is a multimodal reasoning model from Meta for long-running agentic, multi-agent, and coding workflows. It improves long-horizon agent collaboration, instruction following, and coding efficiency relative to Muse Spark 1.2.",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/meta/muse-spark-1.3",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "meta",
+        "model_id": "muse-spark-1.3-contributor",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/meta/muse-spark-1.3",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/commandcode/models/meta/muse-spark-1.3-contributor",
+        "providers/meta/models/muse-spark-1.3-contributor"
+      ],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "meta/muse-spark-open",
+      "display": "Muse Spark Open",
+      "description": "Muse Spark Open is an 816B total / 42B active open-weight multimodal reasoning model from Meta for coding and long-horizon agentic work, with 1M-token context.",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/meta/muse-spark-open",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/meta/muse-spark-open",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "minimax/minimax-m3.1-flash",
+      "display": "MiniMax M3.1 Flash",
+      "description": "Frontier multimodal coding model with 1M context window and tunable thinking depth",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 512000,
+      "output_source": "modelsdev",
+      "output_ref": "models/minimax/MiniMax-M3.1-Flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "minimax",
+        "model_id": "MiniMax-M3.1-Flash",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/minimax/MiniMax-M3.1-Flash",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "MiniMaxAI/MiniMax-M2.5",
+      "display": "MiniMax M2.5",
+      "description": "Prior MiniMax coding model for agent workflows, office edits, and automation",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 204800,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/minimax/MiniMax-M2.5",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "minimax",
+        "model_id": "MiniMax-M2.5",
+        "options": []
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/minimax/MiniMax-M2.5",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "MiniMaxAI/MiniMax-M2.7",
+      "display": "MiniMax M2.7",
+      "description": "Open MiniMax flagship for coding agents, office automation, and complex environments",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 204800,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/minimax/MiniMax-M2.7",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "minimax",
+        "model_id": "MiniMax-M2.7",
+        "options": []
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/minimax/MiniMax-M2.7",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "MiniMaxAI/MiniMax-M3",
+      "display": "MiniMax M3",
+      "description": "MiniMax multimodal model for long-context coding, perception, and agent planning",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 512000,
+      "output_source": "modelsdev",
+      "output_ref": "models/minimax/MiniMax-M3",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "minimax",
+        "model_id": "MiniMax-M3",
+        "options": [
+          {
+            "type": "toggle"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/minimax/MiniMax-M3",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "mistral/mistral-large-4",
+      "display": "Mistral Large 4",
+      "description": "Mistral's 1T-parameter multimodal MoE for reasoning, coding, and agentic work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 262144,
+      "output_source": "modelsdev",
+      "output_ref": "models/mistral/mistral-large-4",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "mistral",
+        "model_id": "mistral-large-4",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/mistral/mistral-large-4",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "moonshotai/Kimi-K2.5",
+      "display": "Kimi K2.5",
+      "description": "Earlier Kimi frontier model for long-context agents, coding, and multimodal work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "modelsdev",
+      "output": 262144,
+      "output_source": "modelsdev",
+      "output_ref": "models/moonshotai/kimi-k2.5",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/moonshotai/kimi-k2.5",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "moonshotai/Kimi-K2.6",
+      "display": "Kimi K2.6",
+      "description": "Multimodal Kimi workhorse for agent loops, coding tasks, and visual context",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "modelsdev",
+      "output": 262144,
+      "output_source": "modelsdev",
+      "output_ref": "models/moonshotai/kimi-k2.6",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "moonshotai",
+        "model_id": "kimi-k2.6",
+        "options": [
+          {
+            "type": "toggle"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/moonshotai/kimi-k2.6",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "moonshotai/Kimi-K2.7-Code",
+      "display": "Kimi K2.7 Code",
+      "description": "Coding-focused Kimi model, stronger on long-horizon repo work with less overthinking",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "modelsdev",
+      "output": 262144,
+      "output_source": "modelsdev",
+      "output_ref": "models/moonshotai/kimi-k2.7-code",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "moonshotai",
+        "model_id": "kimi-k2.7-code",
+        "options": []
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/moonshotai/kimi-k2.7-code",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "moonshotai/Kimi-K2.7-Code-Highspeed",
+      "display": "Kimi K2.7 Code HighSpeed",
+      "description": "Lower-latency Kimi Code variant for interactive edits and coding-agent loops",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "modelsdev",
+      "output": 262144,
+      "output_source": "modelsdev",
+      "output_ref": "models/moonshotai/kimi-k2.7-code-highspeed",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/moonshotai/kimi-k2.7-code-highspeed",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "moonshotai/Kimi-K3",
+      "display": "Kimi K3",
+      "description": "Multimodal Kimi model with 1M context and toggleable max-effort thinking for long-horizon agent work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/moonshotai/kimi-k3",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "moonshotai",
+        "model_id": "kimi-k3",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "high",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/moonshotai/kimi-k3",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "moonshotai/Kimi-K3.1-Pro",
+      "display": "Kimi K3.1 Pro",
+      "description": "Multimodal Kimi model with 1M context and always-on reasoning for coding, 3D creation, financial research, and agentic work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/moonshotai/kimi-k3.1-pro",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "moonshotai",
+        "model_id": "kimi-k3.1-pro",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "high",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/moonshotai/kimi-k3.1-pro",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b",
+      "display": "Nemotron 3 Ultra",
+      "description": "Largest Nemotron 3 model for maximum open-weight reasoning and agent accuracy",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 128000,
+      "output_source": "modelsdev",
+      "output_ref": "models/nvidia/nemotron-3-ultra-550b-a55b",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "nvidia",
+        "model_id": "nvidia/nemotron-3-ultra-550b-a55b",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "medium",
+              "high"
+            ]
+          },
+          {
+            "type": "budget_tokens",
+            "min": -1,
+            "max": 32768
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/nvidia/nemotron-3-ultra-550b-a55b",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "nvidia/nemotron-3.5-super-vl",
+      "display": "Nemotron 3.5 Super VL",
+      "description": "NVIDIA vision-language reasoning model for text, image, and video understanding and agentic tool use",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 8192,
+      "output_source": "modelsdev",
+      "output_ref": "models/nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "nvidia",
+        "model_id": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "options": [
+          {
+            "type": "toggle"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/kilo/models/nvidia/nemotron-3.5-super-vl",
+        "providers/nano-gpt/models/nvidia/nemotron-3.5-super-vl",
+        "providers/nebius/models/nvidia/Nemotron-3.5-Super-VL",
+        "providers/openrouter/models/nvidia/nemotron-3.5-super-vl",
+        "providers/vercel/models/nvidia/nemotron-3.5-super-vl"
+      ],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "ornith/ornith-1.5-122b",
+      "display": "Ornith 1.5 122B",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.6-Max-Preview",
+      "display": "Qwen 3.6 Max Preview",
+      "description": "Flagship Qwen model for complex reasoning, coding, and agentic workflows",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "modelsdev",
+      "output": 65536,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.6-max-preview",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "alibaba",
+        "model_id": "qwen3.6-max-preview",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "budget_tokens"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.6-max-preview",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.6-Plus",
+      "display": "Qwen 3.6 Plus",
+      "description": "Earlier Qwen multimodal workhorse for million-token agent and document tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 65536,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.6-plus",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "alibaba",
+        "model_id": "qwen3.6-plus",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "budget_tokens"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.6-plus",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.7-Flash",
+      "display": "Qwen 3.7 Flash",
+      "description": "Lightweight multimodal Qwen model for high-throughput text, image, and video tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.7-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "alibaba",
+        "model_id": "qwen3.7-flash",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "budget_tokens",
+            "max": 262144
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.7-flash",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.7-Max",
+      "display": "Qwen 3.7 Max",
+      "description": "Qwen frontier model tuned for agent frameworks, coding assistants, and long tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.7-max",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "alibaba",
+        "model_id": "qwen3.7-max",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "budget_tokens"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.7-max",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.7-Plus",
+      "display": "Qwen 3.7 Plus",
+      "description": "Multimodal Qwen workhorse for long-context agents, visual inputs, and coding",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 64000,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.7-plus",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "alibaba",
+        "model_id": "qwen3.7-plus",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "budget_tokens"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.7-plus",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.8-27B",
+      "display": "Qwen 3.8 27B",
+      "description": "Dense 27B vision-language model for coding, agent tasks, and image and video understanding",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "modelsdev",
+      "output": 32768,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.8-27b",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.8-27b",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.8-Flash",
+      "display": "Qwen 3.8 Flash",
+      "description": "Qwen vision-language model for visual reasoning, documents, and agent tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.8-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "alibaba",
+        "model_id": "qwen3.8-flash",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "xhigh"
+            ]
+          },
+          {
+            "type": "budget_tokens",
+            "max": 262144
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.8-flash",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.8-Max",
+      "display": "Qwen 3.8 Max",
+      "description": "2.4-trillion-parameter MoE flagship for coding, professional work, multimodal understanding, and long-horizon agentic workflows",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.8-max",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "alibaba",
+        "model_id": "qwen3.8-max",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "xhigh"
+            ]
+          },
+          {
+            "type": "budget_tokens",
+            "min": 0,
+            "max": 262144
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.8-max",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.8-Max-0902",
+      "display": "Qwen 3.8 Max 0902",
+      "description": "2026-09-02 upgraded snapshot of Qwen3.8 Max with stronger coding, collaborative agents, and multimodal document understanding",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.8-max-0902",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.8-max-0902",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "Qwen/Qwen3.8-Omni-Flash",
+      "display": "Qwen 3.8 Omni Flash",
+      "description": "Qwen omni model for text, vision, audio, and multimodal agent tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/alibaba/qwen3.8-omni-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "alibaba",
+        "model_id": "qwen3.8-omni-flash",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "xhigh"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/alibaba/qwen3.8-omni-flash",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "reflection/beam:free",
+      "display": "Beam 1.0",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
+      "metadata_candidates": []
+    },
+    {
+      "id": "stealth/crouton-alpha",
+      "display": "Crouton Alpha",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
+      "metadata_candidates": []
+    },
+    {
+      "id": "stealth/glyph-cluster:free",
+      "display": "Glyph Cluster",
+      "description": "",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 262144,
+      "context_source": "fallback",
+      "output": 65536,
+      "output_source": "fallback",
+      "output_ref": "",
+      "vision": null,
+      "vision_source": "unresolved",
+      "reasoning": null,
+      "reasoning_source": "unresolved",
+      "tool_call": null,
+      "tool_call_source": "unresolved",
+      "reasoning_options_reference": null,
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "",
+      "metadata_match": "unresolved",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "no_compatible_structural_candidate",
+      "metadata_candidates": []
+    },
+    {
+      "id": "stepfun/Step-3.5-Flash",
+      "display": "Step 3.5 Flash",
+      "description": "StepFun flash lane for quick multimodal reasoning and coding assistance",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 256000,
+      "context_source": "modelsdev",
+      "output": 256000,
+      "output_source": "modelsdev",
+      "output_ref": "models/stepfun/step-3.5-flash",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "stepfun",
+        "model_id": "step-3.5-flash",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "high"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/stepfun/step-3.5-flash",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "stepfun/Step-3.7-Flash",
+      "display": "Step 3.7 Flash",
+      "description": "Newer StepFun flash model for faster agents, coding, and multimodal prompts",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 256000,
+      "context_source": "modelsdev",
+      "output": 256000,
+      "output_source": "modelsdev",
+      "output_ref": "models/stepfun/step-3.7-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "stepfun",
+        "model_id": "step-3.7-flash",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/stepfun/step-3.7-flash",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "stepfun/Step-5-Preview",
+      "display": "Step 5 Preview",
+      "description": "StepFun's next-generation flagship base model for coding and professional knowledge work, with native text, image, and video input and a 1M-token context window",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 1000000,
+      "output_source": "modelsdev",
+      "output_ref": "models/stepfun/step-5-preview",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "stepfun",
+        "model_id": "step-5-preview",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/stepfun/step-5-preview",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "tencent/hy3-paid",
+      "display": "Tencent Hy3",
+      "description": "Tencent Hy reasoning model for coding, instruction following, and agent tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 256000,
+      "context_source": "modelsdev",
+      "output": 128000,
+      "output_source": "modelsdev",
+      "output_ref": "models/tencent/hy3",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "tencent-tokenhub",
+        "model_id": "hy3",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "high"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/tencent/hy3",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/commandcode/models/tencent/hy3-paid"
+      ],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "tencent/hy4-preview",
+      "display": "Tencent Hy4 Preview",
+      "description": "A next-generation productivity model with significantly enhanced Agent and complex task execution capabilities.",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1024000,
+      "context_source": "modelsdev",
+      "output": 64000,
+      "output_source": "modelsdev",
+      "output_ref": "models/tencent/hy4-preview",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "tencent-tokenhub",
+        "model_id": "hy4-preview",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "high"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/tencent/hy4-preview",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "thinkingmachines/inkling",
+      "display": "Inkling",
+      "description": "Multimodal MoE reasoning model (975B total, 41B active) for text, image, and audio",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 1048576,
+      "output_source": "modelsdev",
+      "output_ref": "models/thinkingmachines/inkling",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "thinkingmachines",
+        "model_id": "thinkingmachines/Inkling",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/thinkingmachines/inkling",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "thinkingmachines/inkling-small",
+      "display": "Inkling Small",
+      "description": "Multimodal MoE reasoning model (276B total, 12B active) for text, image, and audio",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 1048576,
+      "output_source": "modelsdev",
+      "output_ref": "models/thinkingmachines/inkling-small",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "thinkingmachines",
+        "model_id": "thinkingmachines/Inkling-Small",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/thinkingmachines/inkling-small",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "xai/grok-4.5",
+      "display": "Grok 4.5",
+      "description": "xAI's Grok model for chat, coding, agentic tools, and lower hallucination risk",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 500000,
+      "context_source": "modelsdev",
+      "output": 500000,
+      "output_source": "modelsdev",
+      "output_ref": "models/xai/grok-4.5",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "xai",
+        "model_id": "grok-4.5",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/xai/grok-4.5",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "xiaomi/mimo-v2.6-flash",
+      "display": "MiMo V2.6 Flash",
+      "description": "MiMo Flash model for multimodal coding agents and long-context automation",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/xiaomi/mimo-v2.6-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "xiaomi",
+        "model_id": "mimo-v2.6-flash",
+        "options": [
+          {
+            "type": "toggle"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/xiaomi/mimo-v2.6-flash",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "xiaomi/mimo-v2.6-pro",
+      "display": "MiMo V2.6 Pro",
+      "description": "Stronger MiMo Pro tier for multimodal reasoning and coding-agent execution",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1048576,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/xiaomi/mimo-v2.6-pro",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "xiaomi",
+        "model_id": "mimo-v2.6-pro",
+        "options": [
+          {
+            "type": "toggle"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/xiaomi/mimo-v2.6-pro",
+      "metadata_match": "exact",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "z-ai/glm-5.3-flash",
+      "display": "GLM-5.3 Flash",
+      "description": "Native multimodal GLM model for efficient coding and long-horizon agent tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/zhipuai/glm-5.3-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "zhipuai",
+        "model_id": "glm-5.3-flash",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "high",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/zhipuai/glm-5.3-flash",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "z-ai/glm-5.3-flashx",
+      "display": "GLM-5.3 FlashX",
+      "description": "Native multimodal GLM model for efficient coding and long-horizon agent tasks",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/zhipuai/glm-5.3-flash",
+      "vision": true,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "zhipuai",
+        "model_id": "glm-5.3-flashx",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "high",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/zhipuai/glm-5.3-flash",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/commandcode/models/z-ai/glm-5.3-flashx",
+        "providers/ofox/models/z-ai/glm-5.3-flashx",
+        "providers/zenmux/models/z-ai/glm-5.3-flashx",
+        "providers/zhipuai/models/glm-5.3-flashx"
+      ],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "zai-org/GLM-5",
+      "display": "GLM-5",
+      "description": "General GLM flagship for coding, analysis, and tool-heavy engineering workflows",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 204800,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/zhipuai/glm-5",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "zhipuai",
+        "model_id": "glm-5",
+        "options": [
+          {
+            "type": "toggle"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/zhipuai/glm-5",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "zai-org/GLM-5.1",
+      "display": "GLM-5.1",
+      "description": "Strong GLM coding model for agentic engineering, terminals, and repository generation",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 200000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/zhipuai/glm-5.1",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "zhipuai",
+        "model_id": "glm-5.1",
+        "options": [
+          {
+            "type": "toggle"
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/zhipuai/glm-5.1",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "zai-org/GLM-5.2",
+      "display": "GLM-5.2",
+      "description": "Open flagship GLM for long-horizon coding agents and million-token context work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/zhipuai/glm-5.2",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "zhipuai",
+        "model_id": "glm-5.2",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "high",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/zhipuai/glm-5.2",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "zai-org/GLM-5.2-Fast",
+      "display": "GLM-5.2 Fast",
+      "description": "Open flagship GLM for long-horizon coding agents and million-token context work",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/zhipuai/glm-5.2",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "zhipuai",
+        "model_id": "glm-5.2",
+        "options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "high",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/zhipuai/glm-5.2",
+      "metadata_match": "provider_canonical",
+      "metadata_match_sources": [
+        "providers/baseten/models/zai-org/GLM-5.2-Fast",
+        "providers/commandcode/models/zai-org/GLM-5.2-Fast"
+      ],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    },
+    {
+      "id": "zai-org/GLM-5.3",
+      "display": "GLM-5.3",
+      "description": "Flagship GLM model for long-horizon coding, agents, and complex project delivery",
+      "min_plan": "Go",
+      "min_plan_source": "command-code Go plan page",
+      "context": 1000000,
+      "context_source": "modelsdev",
+      "output": 131072,
+      "output_source": "modelsdev",
+      "output_ref": "models/zhipuai/glm-5.3",
+      "vision": false,
+      "vision_source": "modelsdev",
+      "reasoning": true,
+      "reasoning_source": "modelsdev",
+      "tool_call": true,
+      "tool_call_source": "modelsdev",
+      "reasoning_options_reference": {
+        "provider": "zhipuai",
+        "model_id": "glm-5.3",
+        "options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "high",
+              "max"
+            ]
+          }
+        ]
+      },
+      "reasoning_efforts": [],
+      "reasoning_efforts_source": "unresolved",
+      "metadata_ref": "models/zhipuai/glm-5.3",
+      "metadata_match": "namespace_alias",
+      "metadata_match_sources": [],
+      "metadata_match_reason": "",
+      "metadata_candidates": []
+    }
+  ],
+  "fetched_at": "2026-11-05T06:38:19Z"
+}
